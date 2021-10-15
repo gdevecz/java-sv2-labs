@@ -29,6 +29,5 @@ public class StoreMain {
         System.out.println("A két raktár példányosítva, az 1. raktár készele 10-el nőtt, a második raktár készlete 33-al csökkent:");
         System.out.println("1. raktár:\n" + storeOne);
         System.out.println("2. raktár:\n" + storeTwo);
-
     }
 }
