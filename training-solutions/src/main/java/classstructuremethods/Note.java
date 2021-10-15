@@ -2,7 +2,9 @@ package classstructuremethods;
 
 public class Note {
     private String name;
+
     private String topic;
+
     private String text;
 
     public String getName() {
