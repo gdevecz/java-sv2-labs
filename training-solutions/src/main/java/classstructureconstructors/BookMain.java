@@ -3,6 +3,7 @@ package classstructureconstructors;
 public class BookMain {
 
     public static void main(String[] args) {
+
         Book book = new Book("Rejtő Jenő", "Előretolt helyőrség");
         book.register("RJ012");
 

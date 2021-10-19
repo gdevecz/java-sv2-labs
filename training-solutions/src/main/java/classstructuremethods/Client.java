@@ -31,7 +31,6 @@ public class Client {
     }
 
     public void migrate(String address){
-        //setAddress(address);
-        this.setAddress(address);
+        setAddress(address);
     }
 }

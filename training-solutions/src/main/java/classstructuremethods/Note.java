@@ -1,15 +1,15 @@
 package classstructuremethods;
 
 public class Note {
+
     private String name;
-
     private String topic;
-
     private String text;
 
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;

@@ -11,17 +11,22 @@ public class Product {
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getPrice() {
+
         return price;
     }
 
     public void increasePrice(int addToPrice){
+
         this.price += addToPrice;
     }
+
     public void decreasePrice(int subFromPrice){
+
         this.price += subFromPrice;
     }
 }
