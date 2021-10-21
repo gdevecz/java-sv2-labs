@@ -10,12 +10,13 @@ public class LocalVariablesMain {
         int a = 2;
         System.out.println("a: " + a);
 
-        int i, j;
-        i=3;
-        j=4;
+        int i;
+        int j;
+        i = 3;
+        j = 4;
 
         int k = i;
-        System.out.println("i, j, k: "+ i + ", " + j + ", " + k);
+        System.out.println("i, j, k: " + i + ", " + j + ", " + k);
 
         String s = "Hello World";
         System.out.println(s);
@@ -26,8 +27,8 @@ public class LocalVariablesMain {
             System.out.println("a: " + a);
         }
 
-        //x kívül esik a blokk érvényességi tarományán
-        //System.out.println("x: " + x);
-
+//        az itt hivatkozott x kívül esik a blokk érvényességi tartományán, azaz nem csak inintializálatlan,
+//        hanem definiálatlan is.
+//        System.out.println("x: " + x);
     }
 }
