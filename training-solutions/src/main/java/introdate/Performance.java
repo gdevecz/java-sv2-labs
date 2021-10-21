@@ -40,4 +40,8 @@ public class Performance {
         return endTime;
     }
 
+    public String getInfo() {
+        return artist + ": " + dateOfShow + " "
+                + startTime + " - " + endTime;
+    }
 }
