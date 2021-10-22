@@ -8,5 +8,6 @@ public class Main {
         System.out.println(arraysMain.numberOfDaysAsString());
         System.out.println();
         System.out.println(arraysMain.multiplicationTableAsString(5));
+        System.out.println();
     }
 }

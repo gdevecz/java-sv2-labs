@@ -10,14 +10,13 @@ public class ArraysMain {
     }
 
     public String multiplicationTableAsString(int size) {
-        String tmp = "";
-        for (int i = 1 ; i <= size; i++ ) {
-            for (int j = 1; j <=size; j++) {
-                tmp += i * j + " ";
+        int[][] tmp = new int [size][size];
+        for (int i = 0 ; i < size; i++ ) {
+            for (int j = 0; j <size; j++) {
+                tmp[i][j] = (i +1) * (j + 1);
             }
-            tmp += "\n";
         }
-        return tmp;
+        return Arrays.deepToString(tmp);
     }
 
 }
