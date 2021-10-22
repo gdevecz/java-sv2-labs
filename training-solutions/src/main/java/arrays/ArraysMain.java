@@ -23,4 +23,17 @@ public class ArraysMain {
         return Arrays.equals(day,anotherDay);
     }
 
+    public boolean sameTempValuesDaylight(double[] day, double[] anotherDay) {
+        int min = min(day.length,anotherDay.length);
+
+        return Arrays.equals(
+                Arrays.copyOf(day,min),
+                Arrays.copyOf(anotherDay,min)
+        );
+    }
+
+    private int min(int a, int b) {
+        return a < b ? a : b;
+    }
+
 }
