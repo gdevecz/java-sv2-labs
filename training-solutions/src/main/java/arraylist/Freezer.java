@@ -10,7 +10,8 @@ public class Freezer {
 
         List<String> listOfItems = new ArrayList<>();
         listOfItems.add("Sör");
-        listOfItems.addAll(Arrays.asList("Tej", "Szalámi", "Üdítő", "Margarin"));
+        listOfItems.addAll(Arrays.asList("Tej", "Szalámi", "Üdítő"));
+        listOfItems.add("Margarin");
 
         System.out.println(listOfItems.size());
         System.out.println(listOfItems);
