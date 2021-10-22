@@ -21,6 +21,11 @@ public class ArrayOfArraysMain {
         Rectangle rectangle = new Rectangle();
         int[][] rectangularMatrix = rectangle.rectangularMatrix(size);
         arrayOfArrays.printArrayOfArrays(rectangularMatrix);
+        System.out.println();
+
+        DailyValues dailyValues = new DailyValues();
+        int[][] calendar = dailyValues.getValues();
+        arrayOfArrays.printArrayOfArrays(calendar);
     }
 
 }
