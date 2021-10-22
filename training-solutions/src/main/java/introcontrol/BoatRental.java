@@ -40,9 +40,11 @@ public class BoatRental {
         System.out.println();
         if (rentableFivePersonBoat) {
             System.out.println("Az ötszemélyes csónak még kibérelhető.");
-        }if (rentableThreePersonBoat) {
+        }
+        if (rentableThreePersonBoat) {
             System.out.println("A háromszemélyes csónak még kibérelhető.");
-        }if (rentableTwoPersonBoat) {
+        }
+        if (rentableTwoPersonBoat) {
             System.out.println("A kétszemélyes csónak még kibérelhető.");
         }
     }
