@@ -19,4 +19,8 @@ public class ArraysMain {
         return Arrays.deepToString(tmp);
     }
 
+    public boolean sameTempValues(double[] day, double[] anotherDay) {
+        return Arrays.equals(day,anotherDay);
+    }
+
 }
