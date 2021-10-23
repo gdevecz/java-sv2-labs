@@ -14,7 +14,7 @@ public class Debug {
             String fruit = fruits.get(i);
             fruits.contains(fruit.substring(0, 2));
         }
-        System.out.println(fruits.get(1));
+        System.out.println(fruits.get(3).substring(0, 2));
 
         int[] numbers = {3, 7, -2, 1, -4, 5};
 
