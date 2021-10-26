@@ -28,9 +28,9 @@ a bonyolultabb típusokat fogjátok alapszinten megismerni.
 
 ## Bonyolultabb típusok
 
-* [ ] [Tömbök](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709784-tombok)
-* [ ] Tömbök gyakorlati feladat
-* [ ] [Parancssori paraméterek](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/17496052-parancssori-parameterek)
+* [x] [Tömbök](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709784-tombok)
+* [x] Tömbök gyakorlati feladat
+* [x] [Parancssori paraméterek](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/17496052-parancssori-parameterek)
 * [x] Parancssori paraméterek gyakorlati feladat
 * [x] [Tömbök tömbje](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709631-tombok-tombje)
 * [x] Tömbök tömbje gyakorlati feladat
@@ -45,7 +45,7 @@ a bonyolultabb típusokat fogjátok alapszinten megismerni.
 * [x] [Módosítás bejáráskor](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/27993685-modositas-bejaraskor)
 * [x] Módosítás bejáráskor gyakorlati feladat
 * [x] [Debug](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709799-debug)
-* [ ] Debug gyakorlati feladat
+* [x] Debug gyakorlati feladat
 * [x] [Konstans értékek használata](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709785-konstans-ertekek-hasznalata)
 * [x] Konstans értékek használata gyakorlati feladat
 * [x] [Math és Random osztály](https://e-learning.training360.com/courses/take/java-se-alapok-java-nyelvi-elemek/lessons/10709760-math-es-random-osztaly)
