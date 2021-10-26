@@ -20,6 +20,5 @@ public class CyclingTourMain {
         System.out.println("Start: " + cyclingTour.getStartTime());
         System.out.println("Traveled Km: " + cyclingTour.getKms());
         System.out.println("Number of people: " + cyclingTour.getNumberOfPeople());
-
     }
 }
