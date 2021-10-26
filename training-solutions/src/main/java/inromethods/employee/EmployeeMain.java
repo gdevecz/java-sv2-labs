@@ -10,5 +10,7 @@ public class EmployeeMain {
         System.out.println("Fizetése: " + employee.getSalary());
         employee.raiseSalary(25000);
         System.out.println("Megemelt fizetés: " + employee.getSalary());
+        System.out.println("generált toString tesztelése: ");
+        System.out.println(employee);
     }
 }
