@@ -36,7 +36,7 @@ public class Registration {
         System.out.print("Nap: ");
         dayOfBirth = sc.nextInt();
         birthday = registration.getLocalDateFormatFromIntegers(yearOfBirth, monthOfBirth, dayOfBirth);
-        System.out.println("A születési adatok: " + yearOfBirth + "." + monthOfBirth + "." + +dayOfBirth);
+        System.out.println("A születési adatok: " + yearOfBirth + "." + monthOfBirth + "." + dayOfBirth);
         sc.nextLine();
         System.out.print("Kérem az e-mail címet: ");
         email = sc.nextLine();
