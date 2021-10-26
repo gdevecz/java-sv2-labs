@@ -52,8 +52,5 @@ public class Task {
         System.out.println("Description: " + task.description);
         System.out.println("Duration: " + task.duration);
         System.out.println("Start: " + task.startDateTime);
-
     }
-
-
 }
