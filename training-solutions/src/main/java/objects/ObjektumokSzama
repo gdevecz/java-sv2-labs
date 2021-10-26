@@ -1,0 +1,18 @@
+Book book1 = new Book();    // 1. pédányosítás
+Book book2 = new Book();    // 2. pédányosítás
+Book book3 = new Book();    // 3. pédányosítás
+Book book4 = book1;         // csak referencia másolás book4 megegyezik book1-el
+Book book5 = book1;         // csak referencia másolás book5 megegyezik book1-el és book4-el
+Book book6 = book3;         // csak referencia másolás book6 megegyezik book3-al
+Book book7 = null;          // még nincs példányosítás
+book4 = book6;              // csak referencia másolás book4 megegyezik book6-al és book 3-al
+new Book();                 // 4. példányosítás, de azonosító hiányában el is veszik
+book5 = new Book();         // 5. példányosítás, innentől book5 már más, int book1 és book4
+book6 = null;               // book6 innentől null és nem book3
+book5 = book4;              // book5 meg fog egyezni book3-al, book4-el és book6-al, amire eddig hivatkozott, elveszett
+
+AZ 5 déldányosításból a végén hozzáféhető:
+Az eredetileg book1, book2, book3 pédányok elérhetőek
+book1
+book2
+book3 == book4 == book5 == book6
