@@ -11,7 +11,7 @@ public class ExamRegistration {
         Scanner sc = new Scanner(System.in);
         System.out.println("Kérem az jelentkezők adatait, kilépés üres sor (Enter)");
         System.out.println("Az adatok megadási módja:\nnév, születési idő(yyyy.mm.dd), irányítószám, tanulmányi átlag");
-        System.out.println("Examlple: John Doe, 1995.10.3, 1089, 4,3");
+        System.out.println("Examlple: John Doe, 1995.05.03, 1089, 4.3");
 
         String data;
         Person person;

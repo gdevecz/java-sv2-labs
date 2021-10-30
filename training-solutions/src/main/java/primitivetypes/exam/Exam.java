@@ -1,8 +1,8 @@
 package primitivetypes.exam;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Exam {
@@ -31,32 +31,20 @@ public class Exam {
     }
 
     public boolean isValidStringForPerson(String data) {
-        String[] datas = data.split(",",4);
+        String[] datas = data.split(",", 4);
         if (datas.length < 4) {
             return false;
         }
-        if (isNumberOfStringContainsDigitsAndSecialCharacter(datas[1].strip(), '.') != 2) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        if (LocalDate.parse(datas[1].strip(), formatter) == null) {
             return false;
         }
-        int numberOfColons;
-        if ((numberOfColons = isNumberOfStringContainsDigitsAndSecialCharacter(datas[3].strip(), ',')) > 1
-                || numberOfColons < 0) {
+        if ((Integer.valueOf(datas[2].strip())) == null) {
+            return false;
+        }
+        if (Double.valueOf(datas[3]) == null) {
             return false;
         }
         return true;
-    }
-
-    private int isNumberOfStringContainsDigitsAndSecialCharacter(String data, char c) {
-        int number = 0;
-        for (int i = 0; i < data.length(); i++) {
-            if(data.charAt(i) == c) {
-                number++;
-                continue;
-            }
-            if (!(Character.isDigit(data.charAt(i)) || data.charAt(i) == c)) {
-                return -1;
-            }
-        }
-        return number;
     }
 }
