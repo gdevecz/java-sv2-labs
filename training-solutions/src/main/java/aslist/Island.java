@@ -17,11 +17,11 @@ public class Island {
         System.out.println("A kiválasztott dolgok: ");
         System.out.println(importantThings);
         System.out.println("Egy dolgot lecserélhetsz: ");
-        for (int i = 0; i < importantThings.size();i ++){
-            System.out.println(i + 1 + ". " +importantThings.get(i));
+        for (int i = 0; i < importantThings.size(); i++) {
+            System.out.println((i + 1) + ". " + importantThings.get(i));
         }
         System.out.println("0. Nem cserélek.");
-        choice = sc.nextInt()-1;
+        choice = sc.nextInt() - 1;
         sc.nextLine();
 
         if (choice != -1) {
