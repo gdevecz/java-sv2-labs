@@ -10,7 +10,7 @@ public enum SolarSystem {
     URANUS(6),
     NEPTUNE(9);
 
-    public  final int moons;
+    private final int moons;
 
     SolarSystem(int moons) {
         this.moons = moons;
