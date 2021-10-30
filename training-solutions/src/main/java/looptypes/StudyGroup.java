@@ -5,19 +5,6 @@ import java.util.List;
 
 public class StudyGroup {
 
-    public static void main(String[] args) {
-        StudyGroup sg= new StudyGroup();
-        List<String> students = new ArrayList<>();
-        students.add("Gyurcsány Ferenc");
-        students.add("Megegy Elek");
-        students.add("Bor Ivó");
-        students.add("Netuddky");
-        students.add("Orbán Viktor");
-
-        sg.printStudyGroups(students);
-
-    }
-
     public void printStudyGroups(List<String> students) {
         List<String> shorterOrEqualsThanTen = new ArrayList<>();
         List<String> longerThanTen = new ArrayList<>();
