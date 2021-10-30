@@ -10,12 +10,10 @@ public class Sequence {
     public static void main(String[] args) {
         List<Integer> elements = new ArrayList<>(Arrays.asList(1 ,2));
         Scanner sc = new Scanner(System.in);
-        int numberOfAddElements = 5;
+        int newSizeOfElements = elements.size() + 5;
 
-        System.out.println("Kérem a listához adandó számokat: ");
-        numberOfAddElements+=elements.size();
-        for (int i = elements.size(); i < numberOfAddElements; i++) {
-            elements.add(sc.nextInt());
+        for (int i = elements.size(); i <  newSizeOfElements; i++) {
+            elements.add(elements.get(i - 2) * elements.get(i -1));
         }
         System.out.println("A listában szereplő " + elements.size() + " szám: ");
         System.out.println(elements);
