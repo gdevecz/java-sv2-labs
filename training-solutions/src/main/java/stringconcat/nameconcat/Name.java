@@ -40,10 +40,9 @@ public class Name {
         String result = ((title != null)
                 ? title.getText() + " "
                 : (""));
-        result.concat(familyName).concat(" ").concat(givenName);
-        result.concat((middleName != null)
-                ? (result.concat(middleName).concat(" "))
-                : (result.concat("")));
-        return result;
+        return result.concat(familyName).concat(" ").concat(givenName)
+                .concat((middleName != null)
+                        ? (" ").concat(middleName)
+                        : (""));
     }
 }
