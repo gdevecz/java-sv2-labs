@@ -81,7 +81,6 @@ public class UrlManager {
         if (endIndex == -1) {
             endIndex = url.length();
         }
-        System.out.println(url.charAt(startIndex) + "," + url.charAt(endIndex));
         return Integer.parseInt(url.substring(startIndex, endIndex));
     }
 
