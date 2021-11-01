@@ -19,6 +19,5 @@ public class IntScannerMain {
 
         test = "";
         System.out.println(intScanner.convertInts(test));
-
     }
 }
