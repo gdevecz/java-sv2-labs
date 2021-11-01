@@ -12,9 +12,9 @@ public class StringScanner {
 
         List<String> subSentences = new ArrayList<>();
         String s = sc.nextLine();
-        sc = new Scanner(s).useDelimiter(", ");
+        sc = new Scanner(s).useDelimiter(" ");
         while (sc.hasNext()) {
-            System.out.print(sc.next() + ", ");
+            System.out.println(sc.next());
         }
         System.out.println();
 
