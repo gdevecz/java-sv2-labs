@@ -7,14 +7,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class GentlemanTest {
 
     @Test
-    void testCreate() {
+    void createTest() {
         // Given
         Gentleman gentleman = new Gentleman();
 
         // When
-        String hello = gentleman.sayHello("John Doe");
+        String welcome = gentleman.sayHello("Jon Doe");
 
         // Then
-        assertEquals("Hello, John Doe+", hello);
+        assertEquals("Hello, Jon Doe!", welcome);
+    }
+
+    @Test
+    void createTest2() {
+        // Given
+        Gentleman gentleman = new Gentleman();
+
+        // When
+        String welcome = gentleman.sayHello(null);
+
+        // Then
+        assertEquals("Hello, Anonymous!", welcome);
     }
 }
