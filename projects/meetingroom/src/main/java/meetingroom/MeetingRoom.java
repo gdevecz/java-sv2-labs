@@ -15,6 +15,13 @@ public class MeetingRoom {
 
     }
 
+    @Override
+    public String toString() {
+        return "tárgyaló: " + name
+                + ", szélesség: " + width
+                + ", hosszúság: " + length
+                + ", terület: " + getArea();
+    }
 
     public int getArea(){
         return length * width;
