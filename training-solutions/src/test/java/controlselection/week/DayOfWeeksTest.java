@@ -16,6 +16,5 @@ class DayOfWeeksTest {
         for (int i = 0; i < source.length; i++) {
             assertEquals(target[i],dayOfWeeks.commentDAyOfWeek(source[i]));
         }
-
     }
 }
