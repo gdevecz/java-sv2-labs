@@ -1,7 +1,5 @@
 package controlselection.month;
 
-import java.util.Locale;
-
 public class DayInMonth {
 
     public int getNumberOfDaysInMonth(int year, String searchedMonth) {
