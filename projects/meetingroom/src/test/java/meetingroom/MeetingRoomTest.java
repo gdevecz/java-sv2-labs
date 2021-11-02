@@ -18,15 +18,4 @@ class MeetingRoomTest {
     void testGetArea() {
         assertEquals(21, meetingRoom.getArea());
     }
-
-    @Test
-    void testReserved() {
-        assertNotEquals(true, meetingRoom.isReserved());
-        assertEquals(false,meetingRoom.isReserved());
-        meetingRoom.setReserved();
-        assertEquals(true,meetingRoom.isReserved());
-        meetingRoom.setFree();
-        assertEquals(false, meetingRoom.isReserved());
-
-    }
 }
