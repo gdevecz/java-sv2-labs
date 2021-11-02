@@ -8,10 +8,21 @@ public class MeetingRoom {
 
     private int width;
 
+    private boolean reserved;
+
     public MeetingRoom(String name, int length, int width) {
         this.name = name;
         this.length = length;
         this.width = width;
+        reserved = false;
+    }
+
+    public void setReserved(){
+        reserved = true;
+    }
+
+    public void setFree() {
+        reserved = false;
     }
 
     public int getArea(){
@@ -40,5 +51,9 @@ public class MeetingRoom {
 
     public void setWidth(int width) {
         this.width = width;
+    }
+
+    public boolean isReserved() {
+        return reserved;
     }
 }
