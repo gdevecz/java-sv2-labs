@@ -48,7 +48,6 @@ public class MeetingRoomController {
                 System.out.println("hosszúság: ");
                 length = sc.nextInt();
                 sc.nextLine();
-
                 office.addMeetingRoom(new MeetingRoom(name,length,width));
                 break;
             case 2 :
@@ -66,20 +65,17 @@ public class MeetingRoomController {
             case 6 :
                 System.out.print("Kérem a keresendő tárgyaló nevét: ");
                 String search = sc.nextLine();
-
                 office.printMeetingRoomsWithName(search);
                 break;
             case 7 :
                 System.out.print("Kérem a mintát ami alapján keresek: ");
                 String part = sc.nextLine();
-
                 office.printMeetingRoomContains(part);
                 break;
             case 8:
                 System.out.println("Kérem a területet, aminél nagyobb tágyalókat keresek: ");
                 int area = sc.nextInt();
                 sc.nextLine();
-
                 office.printAreasLargerThan(area);
                 break;
         }
