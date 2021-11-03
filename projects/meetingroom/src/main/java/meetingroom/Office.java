@@ -13,23 +13,30 @@ public class Office {
 
     public void printNames() {
         System.out.println("A tárgyalók sorrendben:");
+        boolean first = true;
+        StringBuilder sb = new StringBuilder();
         for (MeetingRoom meetingRoom : meetingRooms) {
-            System.out.println(meetingRoom.getName());
+            sb.append(meetingRoom.getName()).append(", ");
         }
+        System.out.println(sb.substring(0, sb.length() - 2));
     }
 
     public void printNamesReverse() {
         System.out.println("A tárgyalók fordított sorrendben:");
-        for (int i = meetingRooms.size() - 1; i >= 0; i++) {
-            System.out.println(meetingRooms.get(i).getName());
+        StringBuilder sb = new StringBuilder();
+        for (int i = meetingRooms.size() - 1; i >= 0; i--) {
+            sb.append(meetingRooms.get(i).getName()).append(", ");
         }
+        System.out.println(sb.substring(0, sb.length() - 2));
     }
 
     public void printEvenNames() {
         System.out.println("A páros számú tárgyalók:");
+        StringBuilder sb = new StringBuilder();
         for (int i = 1; i < meetingRooms.size(); i += 2) {
-            System.out.println(meetingRooms.get(i).getName());
+            sb.append(meetingRooms.get(i).getName()).append(", ");
         }
+        System.out.println(sb.substring(0, sb.length() - 2));
     }
 
     public void printAreas() {
@@ -40,29 +47,43 @@ public class Office {
     }
 
     public void printMeetingRoomsWithName(String name) {
+        StringBuilder sb = new StringBuilder();
+        int hits = 0;
         int i = 0;
-        while (i < meetingRooms.size()
-                && !(meetingRooms.get(i).getName().equals(name))) {
-            i++;
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            if (meetingRoom.getName().equals(name)) {
+                hits++;
+                sb.append(meetingRoom).append("\n");
+            }
         }
-        if (i < meetingRooms.size()) {
-            String result = meetingRooms.get(i).toString();
-            System.out.println(result.substring(result.indexOf(',') + 2));
+        if (hits == 1) {
+            System.out.println(sb.substring(sb.indexOf(",") + 2, sb.length() - 1));
+        } else if (hits > 1) {
+            System.out.println(sb.substring(0, sb.length() - 1));
         }
+
     }
 
     public void printMeetingRoomContains(String part) {
+        StringBuilder sb = new StringBuilder();
+        int hits = 0;
+        int i = 0;
         for (MeetingRoom meetingRoom : meetingRooms) {
-            if(meetingRoom.getName().contains(part)){
-                String result = meetingRooms.toString();
-                System.out.println(result.substring(result.indexOf(',') + 2));
+            if (meetingRoom.getName().toLowerCase().contains(part.toLowerCase())) {
+                hits++;
+                sb.append(meetingRoom).append("\n");
             }
+        }
+        if (hits == 1) {
+            System.out.println(sb.substring(sb.indexOf(",") + 2, sb.length() - 1));
+        } else if (hits > 1) {
+            System.out.println(sb.substring(0, sb.length() - 1));
         }
     }
 
     public void printAreasLargerThan(int area) {
-        for (MeetingRoom meetingRoom :meetingRooms) {
-            if(meetingRoom.getArea() > area) {
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            if (meetingRoom.getArea() > area) {
                 System.out.println(meetingRoom);
             }
         }
