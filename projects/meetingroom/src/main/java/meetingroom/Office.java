@@ -6,85 +6,91 @@ import java.util.List;
 public class Office {
 
     private List<MeetingRoom> meetingRooms = new ArrayList<>();
+    private MeetingRoomIO mIO = new MeetingRoomIO();
 
     public void addMeetingRoom(MeetingRoom meetingRoom) {
         meetingRooms.add(meetingRoom);
     }
 
     public void printNames() {
-        System.out.println("A tárgyalók sorrendben:");
-        boolean first = true;
-        StringBuilder sb = new StringBuilder();
-        for (MeetingRoom meetingRoom : meetingRooms) {
-            sb.append(meetingRoom.getName()).append(", ");
-        }
-        System.out.println(sb.substring(0, sb.length() - 2));
+        mIO.printListOfNamesInLineWithhLabel(meetingRooms, "A tárgyalók sorrendben:");
     }
 
     public void printNamesReverse() {
-        System.out.println("A tárgyalók fordított sorrendben:");
-        StringBuilder sb = new StringBuilder();
+        List<MeetingRoom> assortedList = new ArrayList<>();
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
-            sb.append(meetingRooms.get(i).getName()).append(", ");
+            assortedList.add(meetingRooms.get(i));
         }
-        System.out.println(sb.substring(0, sb.length() - 2));
+        mIO.printListOfNamesInLineWithhLabel(assortedList, "A tárgyalók fordított sorrendben:");
     }
 
     public void printEvenNames() {
-        System.out.println("A páros számú tárgyalók:");
-        StringBuilder sb = new StringBuilder();
+        List<MeetingRoom> assortedList = new ArrayList<>();
         for (int i = 1; i < meetingRooms.size(); i += 2) {
-            sb.append(meetingRooms.get(i).getName()).append(", ");
+            assortedList.add(meetingRooms.get(i));
         }
-        System.out.println(sb.substring(0, sb.length() - 2));
+        mIO.printListOfNamesInLineWithhLabel(assortedList, "A páros számú tárgyalók:");
     }
 
     public void printAreas() {
+        List<MeetingRoom> assortedList = new ArrayList<>();
         System.out.println("A tárgyalók méretei:");
         for (MeetingRoom meetingRoom : meetingRooms) {
             System.out.println(meetingRoom);
         }
+
     }
 
-    public void printMeetingRoomsWithName(String name) {
-        StringBuilder sb = new StringBuilder();
-        int hits = 0;
-        int i = 0;
+    public void printMeetingRoomsFromName(String name) {
+        List<MeetingRoom> assortedList = new ArrayList<>();
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().equals(name)) {
-                hits++;
-                sb.append(meetingRoom).append("\n");
+                assortedList.add(meetingRoom);
             }
         }
-        if (hits == 1) {
-            System.out.println(sb.substring(sb.indexOf(",") + 2, sb.length() - 1));
-        } else if (hits > 1) {
-            System.out.println(sb.substring(0, sb.length() - 1));
+        if (assortedList.size() > 0) {
+            String patternForLabel = "A találat%s a(z) \"" + name + "\" névre:";
+            String changingText = "";
+            if (assortedList.size() > 1) {
+                changingText = "ok";
+            }
+            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
         }
-
     }
 
     public void printMeetingRoomContains(String part) {
-        StringBuilder sb = new StringBuilder();
-        int hits = 0;
-        int i = 0;
+        List<MeetingRoom> assortedList = new ArrayList<>();
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().toLowerCase().contains(part.toLowerCase())) {
-                hits++;
-                sb.append(meetingRoom).append("\n");
+                assortedList.add(meetingRoom);
             }
         }
-        if (hits == 1) {
-            System.out.println(sb.substring(sb.indexOf(",") + 2, sb.length() - 1));
-        } else if (hits > 1) {
-            System.out.println(sb.substring(0, sb.length() - 1));
+        if (assortedList.size() > 0) {
+            String patternForLabel = "A találat%s a(z) \"" + part + "\" névrészletre:";
+            String changingText = "";
+            if (assortedList.size() > 1) {
+                changingText = "ok";
+            }
+            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
         }
+
     }
 
     public void printAreasLargerThan(int area) {
+        List<MeetingRoom> assortedList = new ArrayList<>();
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getArea() > area) {
-                System.out.println(meetingRoom);
+                assortedList.add(meetingRoom);
+            }
+        }
+        if (assortedList.size() > 0) {
+            String patternForLabel = "A " + area + "m2-nél nagyobb tárgyaló%s:";
+            String changingText = "";
+            if (assortedList.size() > 1) {
+                changingText = "k";
+                mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
+            } else {
+                mIO.printMeetingRoomWithLabel(assortedList.get(0), String.format(patternForLabel, changingText));
             }
         }
     }

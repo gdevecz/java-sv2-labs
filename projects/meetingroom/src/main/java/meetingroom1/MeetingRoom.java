@@ -1,4 +1,4 @@
-package meetingroom;
+package meetingroom1;
 
 public class MeetingRoom {
 
@@ -12,13 +12,14 @@ public class MeetingRoom {
         this.name = name;
         this.length = length;
         this.width = width;
+
     }
 
     @Override
     public String toString() {
         return name
-                + ", szélessége: " + width
-                + ", hosszúsága: " + length
+                + ", szélesség: " + width
+                + ", hosszúság: " + length
                 + ", terület: " + getArea();
     }
 

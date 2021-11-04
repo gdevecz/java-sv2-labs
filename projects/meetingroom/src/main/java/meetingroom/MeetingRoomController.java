@@ -5,52 +5,41 @@ import java.util.Scanner;
 public class MeetingRoomController {
 
     Office office = new Office();
+    MeetingRoomIO mIO = new MeetingRoomIO();
+
     public static void main(String[] args) {
 
         MeetingRoomController mrc = new MeetingRoomController();
         mrc.runMenu();
     }
 
-    public void runMenu(){
+    public void runMenu() {
         Scanner sc = new Scanner(System.in);
+        office.addMeetingRoom(new MeetingRoom("teszt1", 3, 7));
+        office.addMeetingRoom(new MeetingRoom("teSZt2", 3, 7));
+        office.addMeetingRoom(new MeetingRoom("teszt3", 4, 4));
+        office.addMeetingRoom(new MeetingRoom("teszt4", 2, 8));
+        office.addMeetingRoom(new MeetingRoom("test1", 5, 5));
         int option;
         do {
             printMenu();
-            option = sc.nextInt();
+            option = mIO.labeledRequestANumber("Kérem válasszon menük közül: ");
             choosedOption(option);
         } while (option != 9);
     }
 
     public void printMenu() {
-        System.out.println("1. Tárgyaló rögzítése\n"
-                +"2. Tárgyalók sorrendben\n"
-                +"3. Tárgyalók visszafele sorrendben\n"
-                +"4. Minden második tárgyaló\n"
-                +"5. Területek\n"
-                +"6. Keresés pontos név alapján\n"
-                +"7. Keresés névtöredék alapján\n"
-                +"8. Keresés terület alapján\n"
-                +"9. Kilépés");
+        mIO.printMenu();
     }
 
     private void choosedOption(int option) {
         Scanner sc = new Scanner(System.in);
         switch (option) {
-            case 1 :
-                String name;
-                int width;
-                int length;
-                System.out.println("Kérem a tárgyaló adatait!");
-                System.out.print("név: ");
-                name = sc.nextLine();
-                System.out.println("szélesség: ");
-                width = sc.nextInt();
-                System.out.println("hosszúság: ");
-                length = sc.nextInt();
-                sc.nextLine();
-                office.addMeetingRoom(new MeetingRoom(name,length,width));
+            case 1:
+                String label = "Kérem az új tárgyaló adatait!";
+                office.addMeetingRoom(mIO.requestANeWMeetingRoom(label));
                 break;
-            case 2 :
+            case 2:
                 office.printNames();
                 break;
             case 3:
@@ -59,23 +48,19 @@ public class MeetingRoomController {
             case 4:
                 office.printEvenNames();
                 break;
-            case 5 :
+            case 5:
                 office.printAreas();
                 break;
-            case 6 :
-                System.out.print("Kérem a keresendő tárgyaló nevét: ");
-                String search = sc.nextLine();
-                office.printMeetingRoomsWithName(search);
+            case 6:
+                String search = mIO.labeledRequestAName("Kérem a keresendő tárgyaló nevét: ");
+                office.printMeetingRoomsFromName(search);
                 break;
-            case 7 :
-                System.out.print("Kérem a mintát ami alapján keresek: ");
-                String part = sc.nextLine();
+            case 7:
+                String part = mIO.labeledRequestAName("Kérem a mintát ami alapján keresek: ");
                 office.printMeetingRoomContains(part);
                 break;
             case 8:
-                System.out.println("Kérem a területet, aminél nagyobb tágyalókat keresek: ");
-                int area = sc.nextInt();
-                sc.nextLine();
+                int area = mIO.labeledRequestANumber("Kérem a területet, aminél nagyobb tágyalókat keresek: ");
                 office.printAreasLargerThan(area);
                 break;
         }

@@ -1,5 +1,6 @@
 package meetingroom;
 
+import meetingroom1.MeetingRoom;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
