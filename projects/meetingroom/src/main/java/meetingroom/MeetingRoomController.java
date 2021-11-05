@@ -14,16 +14,16 @@ public class MeetingRoomController {
     }
 
     public void runMenu() {
-        Scanner sc = new Scanner(System.in);
         office.addMeetingRoom(new MeetingRoom("teszt1", 3, 7));
-        office.addMeetingRoom(new MeetingRoom("teSZt2", 3, 7));
-        office.addMeetingRoom(new MeetingRoom("teszt3", 4, 4));
-        office.addMeetingRoom(new MeetingRoom("teszt4", 2, 8));
+        office.addMeetingRoom(new MeetingRoom("teSZt2", 13, 7));
+        office.addMeetingRoom(new MeetingRoom("teszt3", 41, 24));
+        office.addMeetingRoom(new MeetingRoom("teszt4", 20, 18));
         office.addMeetingRoom(new MeetingRoom("test1", 5, 5));
+        office.addMeetingRoom(new MeetingRoom("testMeetingRoom", 25, 25));
         int option;
         do {
             printMenu();
-            option = mIO.labeledRequestANumber("Kérem válasszon menük közül: ");
+            option = mIO.labeledRequestANumber("Kérem válasszon a menük közül: ");
             choosedOption(option);
         } while (option != 9);
     }
@@ -37,7 +37,7 @@ public class MeetingRoomController {
         switch (option) {
             case 1:
                 String label = "Kérem az új tárgyaló adatait!";
-                office.addMeetingRoom(mIO.requestANeWMeetingRoom(label));
+                office.addMeetingRoom(mIO.requestANewMeetingRoom(label));
                 break;
             case 2:
                 office.printNames();
@@ -52,11 +52,11 @@ public class MeetingRoomController {
                 office.printAreas();
                 break;
             case 6:
-                String search = mIO.labeledRequestAName("Kérem a keresendő tárgyaló nevét: ");
+                String search = mIO.labeledRequestAString("Kérem a keresendő tárgyaló nevét: ");
                 office.printMeetingRoomsFromName(search);
                 break;
             case 7:
-                String part = mIO.labeledRequestAName("Kérem a mintát ami alapján keresek: ");
+                String part = mIO.labeledRequestAString("Kérem a mintát ami alapján keresek: ");
                 office.printMeetingRoomContains(part);
                 break;
             case 8:

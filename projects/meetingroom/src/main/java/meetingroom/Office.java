@@ -1,11 +1,13 @@
 package meetingroom;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Office {
 
     private List<MeetingRoom> meetingRooms = new ArrayList<>();
+    // Lehet kérdéses, és inkább paraméterlistán kellett volna átadni a konstruktoron kersztül (statikus metódusok hiányában)
     private MeetingRoomIO mIO = new MeetingRoomIO();
 
     public void addMeetingRoom(MeetingRoom meetingRoom) {
@@ -13,7 +15,7 @@ public class Office {
     }
 
     public void printNames() {
-        mIO.printListOfNamesInLineWithhLabel(meetingRooms, "A tárgyalók sorrendben:");
+        mIO.printListOfNamesInLineWithLabel(meetingRooms, "A tárgyalók sorrendben:");
     }
 
     public void printNamesReverse() {
@@ -21,7 +23,7 @@ public class Office {
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
             assortedList.add(meetingRooms.get(i));
         }
-        mIO.printListOfNamesInLineWithhLabel(assortedList, "A tárgyalók fordított sorrendben:");
+        mIO.printListOfNamesInLineWithLabel(assortedList, "A tárgyalók fordított sorrendben:");
     }
 
     public void printEvenNames() {
@@ -29,16 +31,12 @@ public class Office {
         for (int i = 1; i < meetingRooms.size(); i += 2) {
             assortedList.add(meetingRooms.get(i));
         }
-        mIO.printListOfNamesInLineWithhLabel(assortedList, "A páros számú tárgyalók:");
+        mIO.printListOfNamesInLineWithLabel(assortedList, "A páros számú tárgyalók:");
     }
 
     public void printAreas() {
         List<MeetingRoom> assortedList = new ArrayList<>();
-        System.out.println("A tárgyalók méretei:");
-        for (MeetingRoom meetingRoom : meetingRooms) {
-            System.out.println(meetingRoom);
-        }
-
+        mIO.printListOfMeetingRoomsWithLabel(meetingRooms,"A tágyalók területei:");
     }
 
     public void printMeetingRoomsFromName(String name) {
@@ -48,6 +46,11 @@ public class Office {
                 assortedList.add(meetingRoom);
             }
         }
+        int[] w= new int[2];
+        Arrays.copyOfRange(w,3,6);
+        String[][] words = new String[3][];
+
+        words[1] = new String[5];
         if (assortedList.size() > 0) {
             String patternForLabel = "A találat%s a(z) \"" + name + "\" névre:";
             String changingText = "";

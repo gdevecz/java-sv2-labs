@@ -17,12 +17,12 @@ public class MeetingRoom {
     @Override
     public String toString() {
         return name
-                + ", szélessége: " + width
-                + ", hosszúsága: " + length
-                + ", terület: " + getArea();
+                + " szélessége " + width
+                + "m, hosszúsága: " + length
+                + "m, terület: " + getArea() + "m2";
     }
 
-    public int getArea(){
+    public int getArea() {
         return length * width;
     }
 
@@ -30,23 +30,12 @@ public class MeetingRoom {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getLength() {
         return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
     }
 
     public int getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
 }
