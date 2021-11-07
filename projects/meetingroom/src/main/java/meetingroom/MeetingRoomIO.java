@@ -1,14 +1,14 @@
 package meetingroom;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class MeetingRoomIO {
 
-    //nem akartam többször példányosítani, nem tudom, mi a szokás, külön metódusonként vagy lehet így is
     private Scanner sc = new Scanner(System.in);
+
     private StringBuilder sb = new StringBuilder(200);
+
 
     public void printMenu() {
         //cls hiányában nyitó \n a szeparáláshoz
@@ -54,11 +54,9 @@ public class MeetingRoomIO {
         int maxWidthOfNames = getMaxWithOfNames(meetingRooms);
         boolean first = true;
         for (MeetingRoom meetingRoom : meetingRooms) {
-            sb.delete(0, sb.length());
-            sb.append(String.format("%" + maxWidthOfNames + "s %s %2d m, %s %2d m, %s %3d m2",
+            System.out.println((String.format("%" + maxWidthOfNames + "s %s %2d m, %s %2d m, %s %3d m\u00B2",
                     meetingRoom.getName(), "szélessége", meetingRoom.getWidth(),
-                    "hosszúsága", meetingRoom.getLength(), "területe", meetingRoom.getArea()));
-            System.out.println(sb);
+                    "hosszúsága", meetingRoom.getLength(), "területe", meetingRoom.getArea())));
         }
     }
 
@@ -74,7 +72,7 @@ public class MeetingRoomIO {
             if (first) {
                 first = false;
             } else {
-                sb.append(" ");
+                sb.append(", ");
             }
             sb.append(meetingRoom.getName());
         }
@@ -97,8 +95,8 @@ public class MeetingRoomIO {
 
     public void printMeetingRoomWithoutName(MeetingRoom meetingRoom) {
         System.out.println("szélesség: " + meetingRoom.getWidth()
-                + ", hosszúság: " + meetingRoom.getLength()
-                + ", terület: " + meetingRoom.getArea());
+                + " m, hosszúság: " + meetingRoom.getLength()
+                + " m, terület: " + meetingRoom.getArea() + " m\u00B2");
     }
 
     public void printDifferentStyleDependsOnSize(List<MeetingRoom> meetingRooms, String label) {
@@ -108,6 +106,19 @@ public class MeetingRoomIO {
         if (meetingRooms.size() > 1) {
             printListOfMeetingRoomsWithLabel(meetingRooms, String.format(label));
         }
+    }
+
+    public boolean yesNoQuestion(String label) {
+        System.out.print(label);
+        String answer;
+        while (!((answer = sc.nextLine().toLowerCase()).equals("i") || answer.equals("n"))) {
+            System.out.println("Hibás adat! Kérem adja meg helyesen!");
+            System.out.print(label);
+        }
+        if (answer.equals("i")) {
+            return true;
+        }
+        return false;
     }
 
     public boolean isStringValidInteger(String source) {
@@ -128,5 +139,9 @@ public class MeetingRoomIO {
             }
         }
         return maxWidth;
+    }
+
+    public void messageToConsole(String message) {
+        System.out.println(message);
     }
 }

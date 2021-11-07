@@ -7,24 +7,18 @@ public class MeetingRoomController {
     Office office = new Office();
     MeetingRoomIO mIO = new MeetingRoomIO();
 
-    public static void main(String[] args) {
-
-        MeetingRoomController mrc = new MeetingRoomController();
-        mrc.runMenu();
-    }
-
     public void runMenu() {
-        office.addMeetingRoom(new MeetingRoom("teszt1", 3, 7));
-        office.addMeetingRoom(new MeetingRoom("teSZt2", 13, 7));
-        office.addMeetingRoom(new MeetingRoom("teszt3", 41, 24));
-        office.addMeetingRoom(new MeetingRoom("teszt4", 20, 18));
-        office.addMeetingRoom(new MeetingRoom("test1", 5, 5));
-        office.addMeetingRoom(new MeetingRoom("testMeetingRoom", 25, 25));
         int option;
         do {
             printMenu();
             option = mIO.labeledRequestANumber("Kérem válasszon a menük közül: ");
-            choosedOption(option);
+            if (option > 1 && option < 9) {
+                if (office.checkEmptyList()) {
+                    mIO.messageToConsole("A lista üres!");
+                    continue;
+                }
+            }
+            chosenOption(option);
         } while (option != 9);
     }
 
@@ -32,12 +26,19 @@ public class MeetingRoomController {
         mIO.printMenu();
     }
 
-    private void choosedOption(int option) {
+    private void chosenOption(int option) {
         Scanner sc = new Scanner(System.in);
         switch (option) {
             case 1:
                 String label = "Kérem az új tárgyaló adatait!";
-                office.addMeetingRoom(mIO.requestANewMeetingRoom(label));
+                MeetingRoom meetingRoom = mIO.requestANewMeetingRoom(label);
+                if (office.checkNameInList(meetingRoom.getName())) {
+                    if (!mIO.yesNoQuestion(
+                            "Ilyen nevű tárgyaló már szerepel, biztos hogy felvegyem a listába?(i/n) ")) {
+                        break;
+                    }
+                }
+                office.addMeetingRoom(meetingRoom);
                 break;
             case 2:
                 office.printNames();

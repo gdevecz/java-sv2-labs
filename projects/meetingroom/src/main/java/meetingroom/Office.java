@@ -1,7 +1,6 @@
 package meetingroom;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Office {
@@ -9,6 +8,7 @@ public class Office {
     private List<MeetingRoom> meetingRooms = new ArrayList<>();
     // Lehet kérdéses, és inkább paraméterlistán kellett volna átadni a konstruktoron kersztül (statikus metódusok hiányában)
     private MeetingRoomIO mIO = new MeetingRoomIO();
+
 
     public void addMeetingRoom(MeetingRoom meetingRoom) {
         meetingRooms.add(meetingRoom);
@@ -31,12 +31,15 @@ public class Office {
         for (int i = 1; i < meetingRooms.size(); i += 2) {
             assortedList.add(meetingRooms.get(i));
         }
-        mIO.printListOfNamesInLineWithLabel(assortedList, "A páros számú tárgyalók:");
+        String label = getLabelPattern("A páros számú tárgyaló%s:",
+                new String[]{"", "k"},
+                assortedList.size());
+        mIO.printListOfNamesInLineWithLabel(assortedList, label);
     }
 
     public void printAreas() {
         List<MeetingRoom> assortedList = new ArrayList<>();
-        mIO.printListOfMeetingRoomsWithLabel(meetingRooms,"A tágyalók területei:");
+        mIO.printListOfMeetingRoomsWithLabel(meetingRooms, "A tágyalók területei:");
     }
 
     public void printMeetingRoomsFromName(String name) {
@@ -46,18 +49,11 @@ public class Office {
                 assortedList.add(meetingRoom);
             }
         }
-        int[] w= new int[2];
-        Arrays.copyOfRange(w,3,6);
-        String[][] words = new String[3][];
-
-        words[1] = new String[5];
         if (assortedList.size() > 0) {
-            String patternForLabel = "A találat%s a(z) \"" + name + "\" névre:";
-            String changingText = "";
-            if (assortedList.size() > 1) {
-                changingText = "ok";
-            }
-            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
+            String patternForLabel = getLabelPattern("A találat%s a(z) \"" + name + "\" névre:",
+                    new String[]{"", "ok"},
+                    assortedList.size());
+            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel));
         }
     }
 
@@ -69,14 +65,11 @@ public class Office {
             }
         }
         if (assortedList.size() > 0) {
-            String patternForLabel = "A találat%s a(z) \"" + part + "\" névrészletre:";
-            String changingText = "";
-            if (assortedList.size() > 1) {
-                changingText = "ok";
-            }
-            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
+            String patternForLabel = getLabelPattern("A találat%s a(z) \"" + part + "\" névrészletre:",
+                    new String[]{"", "ok"},
+                    assortedList.size());
+            mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel));
         }
-
     }
 
     public void printAreasLargerThan(int area) {
@@ -87,14 +80,41 @@ public class Office {
             }
         }
         if (assortedList.size() > 0) {
-            String patternForLabel = "A " + area + "m2-nél nagyobb tárgyaló%s:";
-            String changingText = "";
+            String patternForLabel = getLabelPattern("A " + area + " m2-nél nagyobb tárgyaló%s:",
+                    new String[]{"", "k"},
+                    assortedList.size());
             if (assortedList.size() > 1) {
-                changingText = "k";
-                mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel, changingText));
+                mIO.printDifferentStyleDependsOnSize(assortedList, String.format(patternForLabel));
             } else {
-                mIO.printMeetingRoomWithLabel(assortedList.get(0), String.format(patternForLabel, changingText));
+                mIO.printMeetingRoomWithLabel(assortedList.get(0), String.format(patternForLabel));
             }
         }
+    }
+
+    public List<MeetingRoom> getMeetingRooms() {
+        return meetingRooms;
+    }
+
+    private String getLabelPattern(String label, String[] change, int sizeOfList) {
+        if (sizeOfList == 1) {
+            return String.format(label, change[0]);
+        }
+        return String.format(label, change[1]);
+    }
+
+    public boolean checkNameInList(String name){
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            if(meetingRoom.getName().equals(name)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkEmptyList() {
+        if(meetingRooms.size()==0){
+            return true;
+        }
+        return false;
     }
 }

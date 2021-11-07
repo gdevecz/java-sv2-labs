@@ -1,6 +1,5 @@
 package meetingroom;
 
-import meetingroom1.MeetingRoom;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,5 +17,12 @@ class MeetingRoomTest {
     @Test
     void testGetArea() {
         assertEquals(21, meetingRoom.getArea());
+    }
+
+    @Test
+    void testToString() {
+        String target = "testroom szélessége 3 m, hosszúsága 7 m, területe 21 m2";
+        String source = meetingRoom.toString();
+        assertEquals(target, source);
     }
 }

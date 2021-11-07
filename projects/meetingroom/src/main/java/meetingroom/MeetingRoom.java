@@ -18,8 +18,8 @@ public class MeetingRoom {
     public String toString() {
         return name
                 + " szélessége " + width
-                + "m, hosszúsága: " + length
-                + "m, terület: " + getArea() + "m2";
+                + " m, hosszúsága " + length
+                + " m, területe " + getArea() + " m\u00B2";
     }
 
     public int getArea() {
