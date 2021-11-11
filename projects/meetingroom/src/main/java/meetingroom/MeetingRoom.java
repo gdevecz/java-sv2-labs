@@ -14,6 +14,7 @@ public class MeetingRoom {
         this.width = width;
     }
 
+
     @Override
     public String toString() {
         return name
@@ -37,5 +38,4 @@ public class MeetingRoom {
     public int getWidth() {
         return width;
     }
-
 }
