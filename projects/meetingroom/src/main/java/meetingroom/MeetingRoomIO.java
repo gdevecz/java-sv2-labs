@@ -111,7 +111,6 @@ public class MeetingRoomIO {
             System.out.println("Hibás adat! Kérem adja meg helyesen!");
             System.out.print(label);
         }
-        sc.close();
         return answer.equals(yesString);
     }
 

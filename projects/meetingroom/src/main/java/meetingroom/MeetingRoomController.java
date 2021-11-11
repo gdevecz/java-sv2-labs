@@ -13,11 +13,8 @@ public class MeetingRoomController {
         do {
             printMenu();
             option = mIO.labeledRequestANumber("Kérem válasszon a menük közül: ");
-            if (option > 1 && option < 9 && option != 6) {
-                if (office.checkEmptyList()) {
-                    mIO.messageToConsole("A lista üres!");
-                    continue;
-                }
+            if (!isProcessOption(option)) {
+                continue;
             }
             chosenOption(option);
         } while (option != 9);
@@ -73,5 +70,15 @@ public class MeetingRoomController {
             }
         }
         return false;
+    }
+
+    private boolean isProcessOption(int option) {
+        if (option > 1 && option != 6 && option < 9) {
+            if (office.checkEmptyList()) {
+                mIO.messageToConsole("A lista üres!");
+                return false;
+            }
+        }
+        return true;
     }
 }
