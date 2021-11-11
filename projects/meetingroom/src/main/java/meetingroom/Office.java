@@ -2,6 +2,7 @@ package meetingroom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Office {
 
@@ -116,21 +117,7 @@ public class Office {
         return meetingRooms.size() == 0;
     }
 
-    public void loadOfTestOffices() {
-        addMeetingRoom(new MeetingRoom("teszt1", 7, 3));
-        addMeetingRoom(new MeetingRoom("ez egy teszt tárgyaló", 5, 4));
-        addMeetingRoom(new MeetingRoom("teSZt2", 13, 7));
-        addMeetingRoom(new MeetingRoom("teszt3", 41, 24));
-        addMeetingRoom(new MeetingRoom("a meeting room", 41, 24));
-        addMeetingRoom(new MeetingRoom("teszt4", 20, 18));
-        addMeetingRoom(new MeetingRoom("test1", 5, 5));
-        addMeetingRoom(new MeetingRoom("testMeetingRoom", 25, 25));
-        addMeetingRoom(new MeetingRoom("teszt3", 5, 2));
-        mIO.printLabeledListOfMeetingRooms(meetingRooms, "A progam a következő tesztesetekkel indul: ");
-        java.util.Scanner sc = new java.util.Scanner(System.in);
-        System.out.print("Tovább: ENTER");
-        sc.nextLine();
-    }
+
 
     public List<MeetingRoom> getMeetingRooms() {
         return meetingRooms;
