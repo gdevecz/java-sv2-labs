@@ -1,4 +1,4 @@
-package meetingroom;
+package meetingroom4;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +21,7 @@ class MeetingRoomTest {
 
     @Test
     void testToString() {
-        String target = "testroom szélessége 3 m, hosszúsága 7 m, területe 21 m2";
+        String target = "testroom szélessége 3 m, hosszúsága 7 m, területe 21 m\u00B2";
         String source = meetingRoom.toString();
         assertEquals(target, source);
     }

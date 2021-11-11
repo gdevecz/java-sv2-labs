@@ -1,4 +1,4 @@
-package meetingroom;
+package meetingroom4;
 
 import java.util.Scanner;
 
@@ -7,12 +7,13 @@ public class MeetingRoomController {
     Office office = new Office();
     MeetingRoomIO mIO = new MeetingRoomIO();
 
+
     public void runMenu() {
         int option;
         do {
             printMenu();
             option = mIO.labeledRequestANumber("Kérem válasszon a menük közül: ");
-            if (option > 1 && option < 9) {
+            if (option > 1 && option < 9 && option != 6) {
                 if (office.checkEmptyList()) {
                     mIO.messageToConsole("A lista üres!");
                     continue;
@@ -31,14 +32,11 @@ public class MeetingRoomController {
         switch (option) {
             case 1:
                 String label = "Kérem az új tárgyaló adatait!";
-                MeetingRoom meetingRoom = mIO.requestANewMeetingRoom(label);
-                if (office.checkNameInList(meetingRoom.getName())) {
-                    if (!mIO.yesNoQuestion(
-                            "Ilyen nevű tárgyaló már szerepel, biztos hogy felvegyem a listába?(i/n) ")) {
-                        break;
-                    }
+                MeetingRoom newMeetingRoom = mIO.requestANewMeetingRoom(label);
+                System.out.println(checkNameBeforeAdd(newMeetingRoom));
+                if (office.getMeetingRooms().isEmpty() || checkNameBeforeAdd(newMeetingRoom)) {
+                    office.addMeetingRoom(newMeetingRoom);
                 }
-                office.addMeetingRoom(meetingRoom);
                 break;
             case 2:
                 office.printNames();
@@ -65,5 +63,15 @@ public class MeetingRoomController {
                 office.printAreasLargerThan(area);
                 break;
         }
+    }
+
+    private boolean checkNameBeforeAdd(MeetingRoom newMeetingRoom) {
+        if (office.checkNameInList(newMeetingRoom.getName())) {
+            String label = "Ilyen nevű tárgyaló már szerepel, biztos hogy felvegyem a listába?";
+            if (mIO.yesNoQuestion(label)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,17 +1,11 @@
-package meetingroom;
+package meetingroom4;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class MeetingRoomIO {
 
-    private Scanner sc = new Scanner(System.in);
-
-    private StringBuilder sb = new StringBuilder(200);
-
-
     public void printMenu() {
-        //cls hiányában nyitó \n a szeparáláshoz
         System.out.println("\n1. Tárgyaló rögzítése\n"
                 + "2. Tárgyalók sorrendben\n"
                 + "3. Tárgyalók visszafele sorrendben\n"
@@ -25,16 +19,24 @@ public class MeetingRoomIO {
 
     public String labeledRequestAString(String label) {
         System.out.print(label);
-        return sc.nextLine();
+        Scanner sc = new Scanner(System.in);
+
+        String result = sc.nextLine();
+        sc.close();
+        return result;
     }
 
     public int labeledRequestANumber(String label) {
-        System.out.print(label);
         String numberString;
-        while (!isStringValidInteger(numberString = sc.nextLine().strip())) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print(label);
+        sc.nextLine();
+        while (!isStringValidInteger(numberString = sc.nextLine())) {
             System.out.print("A megadott adat nem szám, kérem adja meg újra!\n" + label);
         }
-        return Integer.parseInt(numberString);
+        sc.close();
+        return Integer.parseInt(numberString.strip());
     }
 
     public MeetingRoom requestANewMeetingRoom(String label) {
@@ -45,41 +47,53 @@ public class MeetingRoomIO {
         return new MeetingRoom(name, length, width);
     }
 
-    public void printListOfMeetingRoomsWithLabel(List<MeetingRoom> meetingRooms, String label) {
+    public void printLabeledListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
+        System.out.println(label);
+        printListOfMeetingRoomsButName(meetingRooms);
+    }
+
+    public void printListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms) {
+        for (MeetingRoom meetingRoom : meetingRooms) {
+            printMeetingRoomButName(meetingRoom);
+        }
+    }
+
+    public void printLabeledListOfMeetingRooms(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
         printListOfOMeetingRooms(meetingRooms);
     }
 
     public void printListOfOMeetingRooms(List<MeetingRoom> meetingRooms) {
         int maxWidthOfNames = getMaxWithOfNames(meetingRooms);
-        boolean first = true;
+        String pattern = "%" + maxWidthOfNames + "s %s %2d m, %s %2d m, %s %3d m\u00B2\n";
+
         for (MeetingRoom meetingRoom : meetingRooms) {
-            System.out.println((String.format("%" + maxWidthOfNames + "s %s %2d m, %s %2d m, %s %3d m\u00B2",
-                    meetingRoom.getName(), "szélessége", meetingRoom.getWidth(),
-                    "hosszúsága", meetingRoom.getLength(), "területe", meetingRoom.getArea())));
+            System.out.printf(pattern, meetingRoom.getName(), "szélessége", meetingRoom.getWidth(),
+                    "hosszúsága", meetingRoom.getLength(), "területe", meetingRoom.getArea());
         }
     }
 
-    public void printListOfNamesInLineWithLabel(List<MeetingRoom> meetingRooms, String label) {
+    public void printLabeledNamesInLine(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
-        printListOfNamesInLine(meetingRooms);
+        printNamesInLine(meetingRooms);
     }
 
-    public void printListOfNamesInLine(List<MeetingRoom> meetingRooms) {
-        sb.delete(0, sb.length());
-        boolean first = true;
+    public void printNamesInLine(List<MeetingRoom> meetingRooms) {
+        StringBuilder sb = new StringBuilder();
+
         for (MeetingRoom meetingRoom : meetingRooms) {
-            if (first) {
-                first = false;
-            } else {
-                sb.append(", ");
+            if (!sb.isEmpty()) {
+                if(sb.length()!=0 && ((sb.length()+meetingRoom.getName().length()) < 20)){
+                    System.out.print(", ");
+                } else
+                    System.out.println("\n");
             }
-            sb.append(meetingRoom.getName());
+            System.out.print(meetingRoom.getName());
         }
-        System.out.println(sb);
+        System.out.println();
     }
 
-    public void printMeetingRoomWithLabel(MeetingRoom meetingRoom, String label) {
+    public void printLabeledMeetingRoom(MeetingRoom meetingRoom, String label) {
         System.out.println(label);
         printMeetingRoom(meetingRoom);
     }
@@ -88,40 +102,39 @@ public class MeetingRoomIO {
         System.out.println(meetingRoom);
     }
 
-    public void printMeetingRoomWithoutNameWithLabel(MeetingRoom meetingRoom, String label) {
+    public void printLabeledMeetingRoomButName(MeetingRoom meetingRoom, String label) {
         System.out.println(label);
-        printMeetingRoomWithoutName(meetingRoom);
+        printMeetingRoomButName(meetingRoom);
     }
 
-    public void printMeetingRoomWithoutName(MeetingRoom meetingRoom) {
-        System.out.println("szélesség: " + meetingRoom.getWidth()
-                + " m, hosszúság: " + meetingRoom.getLength()
-                + " m, terület: " + meetingRoom.getArea() + " m\u00B2");
-    }
-
-    public void printDifferentStyleDependsOnSize(List<MeetingRoom> meetingRooms, String label) {
-        if (meetingRooms.size() == 1) {
-            printMeetingRoomWithoutNameWithLabel(meetingRooms.get(0), label);
-        }
-        if (meetingRooms.size() > 1) {
-            printListOfMeetingRoomsWithLabel(meetingRooms, String.format(label));
-        }
+    public void printMeetingRoomButName(MeetingRoom meetingRoom) {
+        System.out.printf("%s %3d m, %s %3d m, %s %4d m\u00B2\n",
+                "szélessége", meetingRoom.getWidth(),
+                "hosszúsága", meetingRoom.getLength(),
+                "területe", meetingRoom.getArea());
     }
 
     public boolean yesNoQuestion(String label) {
-        System.out.print(label);
+        String yesString = "i";
+        String noString = "n";
+        System.out.print(label + " (" + yesString + "/" + noString + ")");
         String answer;
-        while (!((answer = sc.nextLine().toLowerCase()).equals("i") || answer.equals("n"))) {
+        Scanner sc = new Scanner(System.in);
+
+        while (!((answer = sc.nextLine()).equalsIgnoreCase(yesString)
+                || answer.equalsIgnoreCase(noString))) {
             System.out.println("Hibás adat! Kérem adja meg helyesen!");
             System.out.print(label);
         }
-        if (answer.equals("i")) {
-            return true;
-        }
-        return false;
+        sc.close();
+        return answer.equals(yesString);
     }
 
     public boolean isStringValidInteger(String source) {
+        if (source.isBlank()) {
+            return false;
+        }
+
         String text = source.strip();
         for (int i = 0; i < text.length(); i++) {
             if (!Character.isDigit(text.charAt(i))) {
@@ -133,6 +146,7 @@ public class MeetingRoomIO {
 
     private int getMaxWithOfNames(List<MeetingRoom> meetingRooms) {
         int maxWidth = 0;
+
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().length() > maxWidth) {
                 maxWidth = meetingRoom.getName().length();
