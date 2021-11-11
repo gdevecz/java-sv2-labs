@@ -99,6 +99,22 @@ public class MeetingRoomIO {
         System.out.println(message);
     }
 
+    public boolean yesNoQuestion(String label) {
+        String yesString = "i";
+        String noString = "n";
+        System.out.print(label + " (" + yesString + "/" + noString + ")");
+        String answer;
+        Scanner sc = new Scanner(System.in);
+
+        while (!((answer = sc.nextLine()).equalsIgnoreCase(yesString)
+                || answer.equalsIgnoreCase(noString))) {
+            System.out.println("Hibás adat! Kérem adja meg helyesen!");
+            System.out.print(label);
+        }
+        sc.close();
+        return answer.equals(yesString);
+    }
+
     private boolean isStringValidInteger(String source) {
         if (source.isBlank()) {
             return false;
