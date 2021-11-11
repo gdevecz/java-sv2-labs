@@ -32,7 +32,7 @@ public class MeetingRoomController {
         switch (option) {
             case 1:
                 String label = "Kérem az új tárgyaló adatait!";
-                MeetingRoom newMeetingRoom = mIO.requestANewMeetingRoom(label);
+                meetingRoom newMeetingRoom = mIO.requestANewMeetingRoom(label);
                 System.out.println(checkNameBeforeAdd(newMeetingRoom));
                 if (office.getMeetingRooms().isEmpty() || checkNameBeforeAdd(newMeetingRoom)) {
                     office.addMeetingRoom(newMeetingRoom);
@@ -65,7 +65,7 @@ public class MeetingRoomController {
         }
     }
 
-    private boolean checkNameBeforeAdd(MeetingRoom newMeetingRoom) {
+    private boolean checkNameBeforeAdd(meetingRoom newMeetingRoom) {
         if (office.checkNameInList(newMeetingRoom.getName())) {
             String label = "Ilyen nevű tárgyaló már szerepel, biztos hogy felvegyem a listába?";
             if (mIO.yesNoQuestion(label)) {

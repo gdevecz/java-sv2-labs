@@ -1,6 +1,6 @@
 package meetingroom4;
 
-public class MeetingRoom {
+public class meetingRoom {
 
     private String name;
 
@@ -8,7 +8,7 @@ public class MeetingRoom {
 
     private int width;
 
-    public MeetingRoom(String name, int length, int width) {
+    public meetingRoom(String name, int length, int width) {
         this.name = name;
         this.length = length;
         this.width = width;

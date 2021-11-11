@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MeetingRoomTest {
-    MeetingRoom meetingRoom = new MeetingRoom("testroom", 7, 3);
+class meetingRoomTest {
+    meetingroom4.meetingRoom meetingRoom = new meetingRoom("testroom", 7, 3);
 
     @Test
     void testCreate() {

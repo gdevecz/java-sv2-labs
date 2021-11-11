@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MeetingRoomIOTest {
+class meetingRoomIOTest {
 
     MeetingRoomIO mIO = new MeetingRoomIO();
 

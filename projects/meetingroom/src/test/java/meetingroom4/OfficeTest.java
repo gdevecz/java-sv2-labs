@@ -16,7 +16,7 @@ class OfficeTest {
 
     @Test
     void testAddMeetingRoom() {
-        MeetingRoom meetingRoom = new MeetingRoom("test room",3,7);
+        meetingRoom meetingRoom = new meetingRoom("test room",3,7);
         office.addMeetingRoom(meetingRoom);
 
         assertEquals(1,office.getMeetingRooms().size());
@@ -24,7 +24,7 @@ class OfficeTest {
 
     @Test
     void testCheckNameInList() {
-        MeetingRoom meetingRoom = new MeetingRoom("test room",3,7);
+        meetingRoom meetingRoom = new meetingRoom("test room",3,7);
         office.addMeetingRoom(meetingRoom);
 
         assertEquals(true,office.checkNameInList("test room"));
@@ -35,7 +35,7 @@ class OfficeTest {
     void testCheckEmptyList() {
         assertEquals(true,office.checkEmptyList());
 
-        MeetingRoom meetingRoom = new MeetingRoom("test room",3,7);
+        meetingRoom meetingRoom = new meetingRoom("test room",3,7);
         office.addMeetingRoom(meetingRoom);
 
         assertEquals(false, office.checkEmptyList());

@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Office {
 
-    private List<MeetingRoom> meetingRooms = new ArrayList<>();
+    private List<meetingRoom> meetingRooms = new ArrayList<>();
 
     private MeetingRoomIO mIO = new MeetingRoomIO();
 
 
-    public void addMeetingRoom(MeetingRoom meetingRoom) {
+    public void addMeetingRoom(meetingRoom meetingRoom) {
         meetingRooms.add(meetingRoom);
     }
 
@@ -19,7 +19,7 @@ public class Office {
     }
 
     public void printNamesReverse() {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<meetingRoom> assortedList = new ArrayList<>();
 
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
             assortedList.add(meetingRooms.get(i));
@@ -28,7 +28,7 @@ public class Office {
     }
 
     public void printEvenNames() {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<meetingRoom> assortedList = new ArrayList<>();
 
         if (meetingRooms.size() < 2) {
             mIO.messageToConsole("Csak egyetlen tárgyaló van a listában, nincs mit megjeleníteni.");
@@ -50,9 +50,9 @@ public class Office {
     }
 
     public void printMeetingRoomsFromName(String name) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<meetingRoom> assortedList = new ArrayList<>();
 
-        for (MeetingRoom meetingRoom : meetingRooms) {
+        for (meetingroom4.meetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().equals(name)) {
                 assortedList.add(meetingRoom);
             }
@@ -67,9 +67,9 @@ public class Office {
     }
 
     public void printMeetingRoomContains(String part) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<meetingRoom> assortedList = new ArrayList<>();
 
-        for (MeetingRoom meetingRoom : meetingRooms) {
+        for (meetingroom4.meetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().toLowerCase().contains(part.toLowerCase())) {
                 assortedList.add(meetingRoom);
             }
@@ -86,9 +86,9 @@ public class Office {
     }
 
     public void printAreasLargerThan(int area) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<meetingRoom> assortedList = new ArrayList<>();
 
-        for (MeetingRoom meetingRoom : meetingRooms) {
+        for (meetingroom4.meetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getArea() > area) {
                 assortedList.add(meetingRoom);
             }
@@ -104,7 +104,7 @@ public class Office {
     }
 
     public boolean checkNameInList(String name) {
-        for (MeetingRoom meetingRoom : meetingRooms) {
+        for (meetingroom4.meetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().equals(name)) {
                 return true;
             }
@@ -117,22 +117,22 @@ public class Office {
     }
 
     public void loadOfTestOffices() {
-        addMeetingRoom(new MeetingRoom("teszt1", 7, 3));
-        addMeetingRoom(new MeetingRoom("ez egy teszt tárgyaló", 5, 4));
-        addMeetingRoom(new MeetingRoom("teSZt2", 13, 7));
-        addMeetingRoom(new MeetingRoom("teszt3", 41, 24));
-        addMeetingRoom(new MeetingRoom("a meeting room", 41, 24));
-        addMeetingRoom(new MeetingRoom("teszt4", 20, 18));
-        addMeetingRoom(new MeetingRoom("test1", 5, 5));
-        addMeetingRoom(new MeetingRoom("testMeetingRoom", 25, 25));
-        addMeetingRoom(new MeetingRoom("teszt3", 5, 2));
+        addMeetingRoom(new meetingRoom("teszt1", 7, 3));
+        addMeetingRoom(new meetingRoom("ez egy teszt tárgyaló", 5, 4));
+        addMeetingRoom(new meetingRoom("teSZt2", 13, 7));
+        addMeetingRoom(new meetingRoom("teszt3", 41, 24));
+        addMeetingRoom(new meetingRoom("a meeting room", 41, 24));
+        addMeetingRoom(new meetingRoom("teszt4", 20, 18));
+        addMeetingRoom(new meetingRoom("test1", 5, 5));
+        addMeetingRoom(new meetingRoom("testMeetingRoom", 25, 25));
+        addMeetingRoom(new meetingRoom("teszt3", 5, 2));
         mIO.printLabeledListOfMeetingRooms(meetingRooms, "A progam a következő tesztesetekkel indul: ");
         java.util.Scanner sc = new java.util.Scanner(System.in);
         System.out.print("Tovább: ENTER");
         sc.nextLine();
     }
 
-    public List<MeetingRoom> getMeetingRooms() {
+    public List<meetingRoom> getMeetingRooms() {
         return meetingRooms;
     }
 
