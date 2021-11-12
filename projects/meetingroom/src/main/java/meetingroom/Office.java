@@ -15,7 +15,7 @@ public class Office {
     }
 
     public void printNames() {
-        mIO.printLabeledNamesInLine(meetingRooms, "A tárgyalók sorrendben:");
+        mIO.printLabeledListOfNames(meetingRooms, "A tárgyalók sorrendben:");
     }
 
     public void printNamesReverse() {
@@ -24,7 +24,7 @@ public class Office {
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
             assortedList.add(meetingRooms.get(i));
         }
-        mIO.printLabeledNamesInLine(assortedList, "A tárgyalók fordított sorrendben:");
+        mIO.printLabeledListOfNames(assortedList, "A tárgyalók fordított sorrendben:");
     }
 
     public void printEvenNames() {
@@ -39,7 +39,7 @@ public class Office {
         }
         String label = "A páros számú "
                 + getSingleOrPlural("tárgyaló", "", "k", assortedList.size());
-        mIO.printLabeledNamesInLine(assortedList, label);
+        mIO.printLabeledListOfNames(assortedList, label);
     }
 
     public void printAreas() {
