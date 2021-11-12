@@ -1,4 +1,4 @@
-package meetingroom4;
+package meetingroom;
 
 import org.junit.jupiter.api.Test;
 

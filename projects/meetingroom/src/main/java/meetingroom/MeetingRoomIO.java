@@ -44,6 +44,16 @@ public class MeetingRoomIO {
         return new MeetingRoom(name, length, width);
     }
 
+    public void printLabeledListOfNames(List<MeetingRoom> meetingRooms, String label) {
+        System.out.println(label);
+        printListOfNames(meetingRooms);
+    }
+
+    public void printListOfNames(List<MeetingRoom> meetingRooms) {
+        for (MeetingRoom meetingRoom :meetingRooms) {
+            System.out.println(meetingRoom.getName());
+        }
+    }
     public void printLabeledListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
         printListOfMeetingRoomsButName(meetingRooms);
