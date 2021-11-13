@@ -50,10 +50,11 @@ public class MeetingRoomIO {
     }
 
     public void printListOfNames(List<MeetingRoom> meetingRooms) {
-        for (MeetingRoom meetingRoom :meetingRooms) {
+        for (MeetingRoom meetingRoom : meetingRooms) {
             System.out.println(meetingRoom.getName());
         }
     }
+
     public void printLabeledListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
         printListOfMeetingRoomsButName(meetingRooms);
@@ -94,7 +95,7 @@ public class MeetingRoomIO {
 
     public void printNamesInLine(List<MeetingRoom> meetingRooms) {
         boolean first = true;
-        for (MeetingRoom meetingRoom: meetingRooms) {
+        for (MeetingRoom meetingRoom : meetingRooms) {
             if (first) {
                 first = false;
             } else {
@@ -112,16 +113,21 @@ public class MeetingRoomIO {
     public boolean yesNoQuestion(String label) {
         String yesString = "i";
         String noString = "n";
-        System.out.print(label + " (" + yesString + "/" + noString + ")");
+        System.out.print(label + " (" + yesString + "/" + noString + ") ");
         String answer;
         Scanner sc = new Scanner(System.in);
 
         while (!((answer = sc.nextLine()).equalsIgnoreCase(yesString)
                 || answer.equalsIgnoreCase(noString))) {
-            System.out.println("Hibás adat! Kérem adja meg helyesen!");
-            System.out.print(label);
+            System.out.println("Hibás adat! Kérem adja meg helyesen!\n" + label);
         }
-        return answer.equals(yesString);
+        return answer.equalsIgnoreCase(yesString);
+    }
+
+    public void waitForEnter() {
+        System.out.print("Tovább: ENTER");
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
     }
 
     private boolean isStringValidInteger(String source) {

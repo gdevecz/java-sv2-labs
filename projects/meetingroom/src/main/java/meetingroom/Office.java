@@ -116,8 +116,6 @@ public class Office {
         return meetingRooms.size() == 0;
     }
 
-
-
     public List<MeetingRoom> getMeetingRooms() {
         return meetingRooms;
     }
