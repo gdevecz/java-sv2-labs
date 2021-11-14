@@ -37,7 +37,7 @@ public class MeetingRoomController {
         office.addMeetingRoom(new MeetingRoom("teszt3", 5, 2));
         office.addMeetingRoom(new MeetingRoom("nagyelőadó", 47, 21));
 
-        mIO.printLabeledListOfMeetingRooms(
+        mIO.printLabeledListMeetingRooms(
                 office.getMeetingRooms(),
                 "A program a test agrumentummal a következő tesztesetekkel indul:");
         mIO.waitForEnter();

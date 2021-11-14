@@ -44,12 +44,12 @@ public class MeetingRoomIO {
         return new MeetingRoom(name, length, width);
     }
 
-    public void printLabeledListOfNames(List<MeetingRoom> meetingRooms, String label) {
+    public void printLabeledListNames(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
-        printListOfNames(meetingRooms);
+        printListNames(meetingRooms);
     }
 
-    public void printListOfNames(List<MeetingRoom> meetingRooms) {
+    public void printListNames(List<MeetingRoom> meetingRooms) {
         boolean first = true;
 
         for (MeetingRoom meetingRoom : meetingRooms) {
@@ -63,12 +63,12 @@ public class MeetingRoomIO {
         System.out.println();
     }
 
-    public void printLabeledListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
+    public void printLabeledListMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
-        printListOfMeetingRoomsButName(meetingRooms);
+        printListMeetingRoomsButName(meetingRooms);
     }
 
-    public void printListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms) {
+    public void printListMeetingRoomsButName(List<MeetingRoom> meetingRooms) {
         for (MeetingRoom meetingRoom : meetingRooms) {
             printMeetingRoomButName(meetingRoom);
         }
@@ -81,13 +81,13 @@ public class MeetingRoomIO {
                 "területe", meetingRoom.getArea());
     }
 
-    public void printLabeledListOfMeetingRooms(List<MeetingRoom> meetingRooms, String label) {
+    public void printLabeledListMeetingRooms(List<MeetingRoom> meetingRooms, String label) {
         System.out.println(label);
-        printListOfOMeetingRooms(meetingRooms);
+        printListMeetingRooms(meetingRooms);
     }
 
-    public void printListOfOMeetingRooms(List<MeetingRoom> meetingRooms) {
-        int maxWidthOfNames = getMaxWithOfNames(meetingRooms);
+    public void printListMeetingRooms(List<MeetingRoom> meetingRooms) {
+        int maxWidthOfNames = getMaxWidthNames(meetingRooms);
         String pattern = "%" + maxWidthOfNames + "s %s %3d m, %s %3d m, %s %4d m\u00B2\n";
 
         for (MeetingRoom meetingRoom : meetingRooms) {
@@ -152,7 +152,7 @@ public class MeetingRoomIO {
         return true;
     }
 
-    private int getMaxWithOfNames(List<MeetingRoom> meetingRooms) {
+    private int getMaxWidthNames(List<MeetingRoom> meetingRooms) {
         int maxWidth = 0;
 
         for (MeetingRoom meetingRoom : meetingRooms) {

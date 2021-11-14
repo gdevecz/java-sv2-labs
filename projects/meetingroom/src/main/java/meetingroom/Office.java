@@ -15,7 +15,7 @@ public class Office {
     }
 
     public void printNames() {
-        mIO.printLabeledListOfNames(meetingRooms, "A tárgyalók sorrendben:");
+        mIO.printLabeledListNames(meetingRooms, "A tárgyalók sorrendben:");
     }
 
     public void printNamesReverse() {
@@ -24,7 +24,7 @@ public class Office {
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
             result.add(meetingRooms.get(i));
         }
-        mIO.printLabeledListOfNames(result, "A tárgyalók fordított sorrendben:");
+        mIO.printLabeledListNames(result, "A tárgyalók fordított sorrendben:");
     }
 
     public void printEvenNames() {
@@ -38,15 +38,15 @@ public class Office {
             result.add(meetingRooms.get(i));
         }
         String label = "A páros számú "
-                + getSingleOrPlural("tárgyaló", "", "k", result.size());
-        mIO.printLabeledListOfNames(result, label);
+                + getSinglePlural("tárgyaló", "", "k", result.size());
+        mIO.printLabeledListNames(result, label);
     }
 
     public void printAreas() {
         String label = "A " +
-                getSingleOrPlural("tágyaló", "", "k", meetingRooms.size()) + " " +
-                getSingleOrPlural("területe", "", "i", meetingRooms.size());
-        mIO.printLabeledListOfMeetingRooms(meetingRooms, label);
+                getSinglePlural("tágyaló", "", "k", meetingRooms.size()) + " " +
+                getSinglePlural("területe", "", "i", meetingRooms.size());
+        mIO.printLabeledListMeetingRooms(meetingRooms, label);
     }
 
     public void printMeetingRoomsFromName(String name) {
@@ -59,10 +59,10 @@ public class Office {
         }
 
         if (!result.isEmpty()) {
-            String label = getSingleOrPlural("Találat", "", "ok", result.size())
-                    + " " + getArticleToAWord(name, false)
+            String label = getSinglePlural("Találat", "", "ok", result.size())
+                    + " " + getArticleToWord(name, false)
                     + " \"" + name + "\" névre:";
-            mIO.printLabeledListOfMeetingRoomsButName(result, label);
+            mIO.printLabeledListMeetingRoomsButName(result, label);
         }
     }
 
@@ -76,13 +76,13 @@ public class Office {
         }
 
         if (result.isEmpty()) {
-            mIO.messageToConsole("Nincs találat " + getArticleToAWord(part, false)
+            mIO.messageToConsole("Nincs találat " + getArticleToWord(part, false)
                     + " \"" + part + "\" névrészletre");
             return;
         }
-        String label = getSingleOrPlural("Találat", "", "ok", result.size()) + " "
-                + getArticleToAWord(part, false) + " \"" + part + "\" névrészletre:";
-        mIO.printLabeledListOfMeetingRooms(result, label);
+        String label = getSinglePlural("Találat", "", "ok", result.size()) + " "
+                + getArticleToWord(part, false) + " \"" + part + "\" névrészletre:";
+        mIO.printLabeledListMeetingRooms(result, label);
     }
 
     public void printAreasLargerThan(int area) {
@@ -98,9 +98,9 @@ public class Office {
             mIO.messageToConsole("Nem találtam " + area + " m\u00B2-nél nagyobb tárgyalót.");
             return;
         }
-        String label = getArticleToANumber(area, true) + " " + area + " m\u00B2-nél nagyobb "
-                + getSingleOrPlural("tárgyaló", "", "k", result.size()) + ":";
-        mIO.printLabeledListOfMeetingRooms(result, label);
+        String label = getArticleToNumber(area, true) + " " + area + " m\u00B2-nél nagyobb "
+                + getSinglePlural("tárgyaló", "", "k", result.size()) + ":";
+        mIO.printLabeledListMeetingRooms(result, label);
     }
 
     public boolean checkNameInList(String name) {
@@ -120,16 +120,16 @@ public class Office {
         return meetingRooms;
     }
 
-    private String getArticleToANumber(int number, boolean startTheSentence) {
+    private String getArticleToNumber(int number, boolean startTheSentence) {
         if (number >= 10 && number < 20
                 || number >= 100 && number < 200
                 || number > 10000 && number < 20000) {
             return startTheSentence ? "A" : "a";
         }
-        return getArticleToAWord(Integer.toString(number), startTheSentence);
+        return getArticleToWord(Integer.toString(number), startTheSentence);
     }
 
-    private String getArticleToAWord(String word, boolean startTheSentence) {
+    private String getArticleToWord(String word, boolean startTheSentence) {
         String privateers = "aáeéiíoóöőuúüű15";
 
         if (privateers.indexOf(word.toLowerCase().charAt(0)) != -1) {
@@ -138,7 +138,7 @@ public class Office {
         return startTheSentence ? "A" : "a";
     }
 
-    private String getSingleOrPlural(String word, String single, String plural, int size) {
+    private String getSinglePlural(String word, String single, String plural, int size) {
         if (size == 1) {
             return word + single;
         }
