@@ -15,6 +15,7 @@ public class MeetingRoomController {
             printMenu();
             option = mIO.labeledRequestANumber("Kérem válasszon a menük közül: ");
             if (!isProcessOption(option)) {
+                mIO.waitForEnter();
                 continue;
             }
             chosenOption(option);
