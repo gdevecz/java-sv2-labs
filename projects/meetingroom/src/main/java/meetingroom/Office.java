@@ -19,27 +19,27 @@ public class Office {
     }
 
     public void printNamesReverse() {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<MeetingRoom> result = new ArrayList<>();
 
         for (int i = meetingRooms.size() - 1; i >= 0; i--) {
-            assortedList.add(meetingRooms.get(i));
+            result.add(meetingRooms.get(i));
         }
-        mIO.printLabeledListOfNames(assortedList, "A tárgyalók fordított sorrendben:");
+        mIO.printLabeledListOfNames(result, "A tárgyalók fordított sorrendben:");
     }
 
     public void printEvenNames() {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<MeetingRoom> result = new ArrayList<>();
 
         if (meetingRooms.size() < 2) {
             mIO.messageToConsole("Csak egyetlen tárgyaló van a listában, nincs mit megjeleníteni.");
             return;
         }
         for (int i = 1; i < meetingRooms.size(); i += 2) {
-            assortedList.add(meetingRooms.get(i));
+            result.add(meetingRooms.get(i));
         }
         String label = "A páros számú "
-                + getSingleOrPlural("tárgyaló", "", "k", assortedList.size());
-        mIO.printLabeledListOfNames(assortedList, label);
+                + getSingleOrPlural("tárgyaló", "", "k", result.size());
+        mIO.printLabeledListOfNames(result, label);
     }
 
     public void printAreas() {
@@ -50,57 +50,57 @@ public class Office {
     }
 
     public void printMeetingRoomsFromName(String name) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<MeetingRoom> result = new ArrayList<>();
 
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().equals(name)) {
-                assortedList.add(meetingRoom);
+                result.add(meetingRoom);
             }
         }
 
-        if (!assortedList.isEmpty()) {
-            String label = getSingleOrPlural("Találat", "", "ok", assortedList.size())
+        if (!result.isEmpty()) {
+            String label = getSingleOrPlural("Találat", "", "ok", result.size())
                     + " " + getArticleToAWord(name, false)
                     + " \"" + name + "\" névre:";
-            mIO.printLabeledListOfMeetingRoomsButName(assortedList, label);
+            mIO.printLabeledListOfMeetingRoomsButName(result, label);
         }
     }
 
     public void printMeetingRoomContains(String part) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<MeetingRoom> result = new ArrayList<>();
 
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getName().toLowerCase().contains(part.toLowerCase())) {
-                assortedList.add(meetingRoom);
+                result.add(meetingRoom);
             }
         }
 
-        if (assortedList.isEmpty()) {
+        if (result.isEmpty()) {
             mIO.messageToConsole("Nincs találat " + getArticleToAWord(part, false)
                     + " \"" + part + "\" névrészletre");
             return;
         }
-        String label = getSingleOrPlural("Találat", "", "ok", assortedList.size()) + " "
+        String label = getSingleOrPlural("Találat", "", "ok", result.size()) + " "
                 + getArticleToAWord(part, false) + " \"" + part + "\" névrészletre:";
-        mIO.printLabeledListOfMeetingRooms(assortedList, label);
+        mIO.printLabeledListOfMeetingRooms(result, label);
     }
 
     public void printAreasLargerThan(int area) {
-        List<MeetingRoom> assortedList = new ArrayList<>();
+        List<MeetingRoom> result = new ArrayList<>();
 
         for (MeetingRoom meetingRoom : meetingRooms) {
             if (meetingRoom.getArea() > area) {
-                assortedList.add(meetingRoom);
+                result.add(meetingRoom);
             }
         }
 
-        if (assortedList.size() == 0) {
+        if (result.size() == 0) {
             mIO.messageToConsole("Nem találtam " + area + " m\u00B2-nél nagyobb tárgyalót.");
             return;
         }
         String label = getArticleToANumber(area, true) + " " + area + " m\u00B2-nél nagyobb "
-                + getSingleOrPlural("tárgyaló", "", "k", assortedList.size()) + ":";
-        mIO.printLabeledListOfMeetingRooms(assortedList, label);
+                + getSingleOrPlural("tárgyaló", "", "k", result.size()) + ":";
+        mIO.printLabeledListOfMeetingRooms(result, label);
     }
 
     public boolean checkNameInList(String name) {

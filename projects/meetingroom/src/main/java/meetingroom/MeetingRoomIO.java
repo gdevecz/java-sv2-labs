@@ -50,9 +50,17 @@ public class MeetingRoomIO {
     }
 
     public void printListOfNames(List<MeetingRoom> meetingRooms) {
+        boolean first = true;
+
         for (MeetingRoom meetingRoom : meetingRooms) {
-            System.out.println(meetingRoom.getName());
+            if(first) {
+                first=false;
+            }else {
+                System.out.print(",\n");
+            }
+            System.out.print(meetingRoom.getName());
         }
+        System.out.println();
     }
 
     public void printLabeledListOfMeetingRoomsButName(List<MeetingRoom> meetingRooms, String label) {
@@ -80,7 +88,7 @@ public class MeetingRoomIO {
 
     public void printListOfOMeetingRooms(List<MeetingRoom> meetingRooms) {
         int maxWidthOfNames = getMaxWithOfNames(meetingRooms);
-        String pattern = "%" + maxWidthOfNames + "s %s %2d m, %s %2d m, %s %3d m\u00B2\n";
+        String pattern = "%" + maxWidthOfNames + "s %s %3d m, %s %3d m, %s %4d m\u00B2\n";
 
         for (MeetingRoom meetingRoom : meetingRooms) {
             System.out.printf(pattern, meetingRoom.getName(), "szélessége", meetingRoom.getWidth(),

@@ -37,7 +37,6 @@ class OfficeTest {
 
         MeetingRoom meetingRoom = new MeetingRoom("test room",3,7);
         office.addMeetingRoom(meetingRoom);
-
         assertEquals(false, office.checkEmptyList());
     }
 }

@@ -25,16 +25,29 @@ public class MeetingRoomController {
         mIO.printMenu();
     }
 
-    public Office getOffice() {
-        return office;
+    public void loadTestOffice() {
+        office.addMeetingRoom(new MeetingRoom("teszt1 tárgyaló", 7, 3));
+        office.addMeetingRoom(new MeetingRoom("ez egy teszt tárgyaló", 5, 4));
+        office.addMeetingRoom(new MeetingRoom("teSZt2", 13, 7));
+        office.addMeetingRoom(new MeetingRoom("teszt3", 41, 19));
+        office.addMeetingRoom(new MeetingRoom("a meeting room", 41, 20));
+        office.addMeetingRoom(new MeetingRoom("kiselőadó", 20, 18));
+        office.addMeetingRoom(new MeetingRoom("test1", 5, 5));
+        office.addMeetingRoom(new MeetingRoom("testMeetingRoom", 25, 25));
+        office.addMeetingRoom(new MeetingRoom("teszt3", 5, 2));
+        office.addMeetingRoom(new MeetingRoom("nagyelőadó", 47, 21));
+
+        mIO.printLabeledListOfMeetingRooms(
+                office.getMeetingRooms(),
+                "A program a test agrumentummal a következő tesztesetekkel indul:");
+        mIO.waitForEnter();
     }
 
     private void chosenOption(int option) {
         Scanner sc = new Scanner(System.in);
         switch (option) {
             case 1:
-                String label = "Kérem az új tárgyaló adatait!";
-                MeetingRoom newMeetingRoom = mIO.requestANewMeetingRoom(label);
+                MeetingRoom newMeetingRoom = mIO.requestANewMeetingRoom("Kérem az új tárgyaló adatait!");
                 if (checkNameBeforeAdd(newMeetingRoom)) {
                     office.addMeetingRoom(newMeetingRoom);
                     mIO.messageToConsole(newMeetingRoom.getName() + " nevű tárgyaló felvéve a listába.");
@@ -86,7 +99,7 @@ public class MeetingRoomController {
     private boolean isProcessOption(int option) {
         if (option > 1 && option != 6 && option < 9) {
             if (office.checkEmptyList()) {
-                mIO.messageToConsole("A lista üres!");
+                mIO.messageToConsole("A tárgyalók listája üres!");
                 return false;
             }
         }
