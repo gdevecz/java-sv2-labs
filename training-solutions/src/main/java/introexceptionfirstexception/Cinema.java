@@ -51,4 +51,13 @@ public class Cinema {
 
         }
     }
+
+    public List<Ticket> getCustomerTickets(String customer, String movie) {
+        for(Performance performance : performances) {
+            if(performance.getTitle().equalsIgnoreCase(movie)) {
+                return (performance.customerTickets(customer));
+            }
+        }
+        return  null;
+    }
 }

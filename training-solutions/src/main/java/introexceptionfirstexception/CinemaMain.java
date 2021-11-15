@@ -1,5 +1,7 @@
 package introexceptionfirstexception;
 
+import java.util.List;
+
 public class CinemaMain {
 
     public static void main(String[] args) {
@@ -9,7 +11,8 @@ public class CinemaMain {
 
 
         cinema.buyTickets();
-
+        List<Ticket> customerTickets = cinema.getCustomerTickets("walaki","Tittanicc");
+        System.out.println(customerTickets);
 
     }
 }
