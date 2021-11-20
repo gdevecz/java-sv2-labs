@@ -10,9 +10,6 @@ public class Jackpot {
         } catch (IllegalArgumentException iae) {
             System.out.println("Nincs egy elem sem a tömbben.");
             System.out.println(iae.getMessage());
-        } catch (NullPointerException npe) {
-            System.out.println("Az egyik név null string.");
-            System.out.println(npe.getMessage());
         }
 
         winner.addWinner("John Doe");
