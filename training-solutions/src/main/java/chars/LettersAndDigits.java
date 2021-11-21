@@ -1,7 +1,5 @@
 package chars;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 public class LettersAndDigits {
 
     public void printLetterOrDigit(String text) {
