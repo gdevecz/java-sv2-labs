@@ -12,13 +12,15 @@ class MaxAgeCalculatorTest {
     @Test
     void testGetTrainerWithMaxAge() {
         MaxAgeCalculator mac = new MaxAgeCalculator();
+        Trainer oldest = new Trainer("Jill Doe", 43);
         List<Trainer> source =
                 Arrays.asList(
                         new Trainer("John Doe", 33),
                         new Trainer("Jack Doe", 23),
-                        new Trainer("Jill Doe", 43)
+                        oldest
                 );
 
+        assertEquals(oldest,mac.getTrainerWithMaxAge(source));
         assertEquals(43,mac.getTrainerWithMaxAge(source).getAge());
     }
 }
