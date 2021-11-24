@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Zoo {
 
-    List<Animal> animals;
+    private  List<Animal> animals;
 
     public Zoo(List<Animal> animals) {
         this.animals = animals;
