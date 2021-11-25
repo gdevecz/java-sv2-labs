@@ -10,11 +10,7 @@ public class Dog {
 
     private double weight;
 
-    public Dog(String name, int age, boolean pedigree, double weight) {
-        this.name = name;
-        this.age = age;
-        this.pedigree = pedigree;
-        this.weight = weight;
+    public Dog() {
     }
 
     public String getName() {
