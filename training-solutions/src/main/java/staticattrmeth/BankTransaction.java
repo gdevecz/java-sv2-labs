@@ -2,7 +2,6 @@ package staticattrmeth;
 
 public class BankTransaction {
 
-
     private static final long MIN_TRANSACTION_VALUE = 1L;
 
     private static final long MAX_TRANSACTION_VALUE = 10_000_000L;
