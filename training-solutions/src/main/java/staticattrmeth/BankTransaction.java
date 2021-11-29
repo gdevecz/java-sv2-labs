@@ -15,7 +15,7 @@ public class BankTransaction {
     private static long currentMaxValue = MAX_TRANSACTION_VALUE;
 
     public BankTransaction(long transactionValue) {
-        if (transactionValue <= MIN_TRANSACTION_VALUE && transactionValue >= MAX_TRANSACTION_VALUE) {
+        if (transactionValue <= MIN_TRANSACTION_VALUE || transactionValue >= MAX_TRANSACTION_VALUE) {
             throw new IllegalArgumentException("Invalid transaction: " + transactionValue);
         }
         sumOfTransactions += transactionValue;
