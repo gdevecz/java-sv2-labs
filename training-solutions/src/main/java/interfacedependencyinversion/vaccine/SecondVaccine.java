@@ -3,7 +3,7 @@ package interfacedependencyinversion.vaccine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FirstVaccine implements Vaccine {
+public class SecondVaccine implements Vaccine {
 
     private List<Person> vaccinationList = new ArrayList<>();
 
@@ -15,28 +15,27 @@ public class FirstVaccine implements Vaccine {
     @Override
     public List<Person> generateVaccinationList(List<Person> registrated) {
         List<Person> tmp = new ArrayList<>(registrated);
-        List<Person> result = getPregnants(tmp);
-        tmp.removeAll(result);
-        result.addAll(getElders(tmp));
+        tmp.removeAll(getPregnantsAndChronics(tmp));
+        List<Person> result = getYounger(tmp);
         tmp.removeAll(result);
         result.addAll(tmp);
         return result;
     }
 
-    private List<Person> getPregnants(List<Person> persons) {
+    private List<Person> getPregnantsAndChronics(List<Person> persons) {
         List<Person> result = new ArrayList<>();
         for (Person person : persons) {
-            if (person.getPregnant() == Pregnancy.YES) {
+            if (person.getPregnant() == Pregnancy.YES || person.getChronic() == ChronicDisease.YES) {
                 result.add(person);
             }
         }
         return result;
     }
 
-    private List<Person> getElders(List<Person> persons) {
+    private List<Person> getYounger(List<Person> persons) {
         List<Person> result = new ArrayList<>();
         for (Person person : persons) {
-            if (person.getAge() > 65) {
+            if (person.getAge() <= 65) {
                 result.add(person);
             }
         }
