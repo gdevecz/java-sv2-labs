@@ -27,6 +27,7 @@ class AxeWarriorTest {
         Character defender = new AxeWarrior(new Point(0, 0), random);
         offender.secondaryAttack(defender);
 
+
         assertEquals(97, offender.getHitPoint());
         assertTrue(defender.getHitPoint() >= 80);
     }

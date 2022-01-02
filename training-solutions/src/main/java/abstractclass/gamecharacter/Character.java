@@ -38,7 +38,7 @@ public abstract class Character {
     }
 
     private void decreaseHitPoint(int diff) {
-        this.hitPoint -= diff;
+        hitPoint -= diff;
     }
 
     abstract public void secondaryAttack(Character enemy);
