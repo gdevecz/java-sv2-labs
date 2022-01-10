@@ -3,6 +3,7 @@ package abstractclass.gamecharacter;
 import org.junit.jupiter.api.Test;
 
 import java.util.Random;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -29,7 +30,6 @@ class ArcherTest {
         while (defender.getHitPoint() > 0) {
             offender.secondaryAttack(defender);
         }
-
         assertTrue(defender.getHitPoint() <= 0);
         assertFalse(defender.isAlive());
     }

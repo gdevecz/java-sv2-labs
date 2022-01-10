@@ -4,15 +4,19 @@ import java.util.Random;
 
 public abstract class Character {
 
-    private Point position;
+    private static final int MAX_DAMAGE = 10;
+
+    private static final int MAX_DEFENCE = 5;
 
     private int hitPoint = 100;
 
-    private Random rnd;
+    private Point position;
+
+    private Random random;
 
     public Character(Point position, Random random) {
         this.position = position;
-        this.rnd = random;
+        this.random = random;
     }
 
     public boolean isAlive() {
@@ -20,16 +24,16 @@ public abstract class Character {
     }
 
     protected int getActualPrimaryDamage() {
-        return rnd.nextInt(10) + 1;
+        return random.nextInt(MAX_DAMAGE) + 1;
     }
 
     private int getActualDefence() {
-        return rnd.nextInt(6);
+        return random.nextInt(MAX_DEFENCE + 1);
     }
 
     protected void hit(Character enemy, int damage) {
-        if (getActualDefence() < damage) {
-            decreaseHitPoint(damage);
+        if (enemy.getActualDefence() < damage) {
+            enemy.decreaseHitPoint(damage);
         }
     }
 
@@ -51,8 +55,8 @@ public abstract class Character {
         return hitPoint;
     }
 
-    public Random getRnd() {
-        return rnd;
+    public Random getRandom() {
+        return random;
     }
 
     public void setPosition(Point position) {

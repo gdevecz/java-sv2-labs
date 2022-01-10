@@ -9,7 +9,7 @@ public class AxeWarrior extends Character{
     }
 
     private int getActualSecondaryDamage(){
-        return getRnd().nextInt(20) + 1;
+        return getRandom().nextInt(20) + 1;
     }
 
     @Override
