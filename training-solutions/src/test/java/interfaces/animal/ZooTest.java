@@ -23,7 +23,7 @@ class ZooTest {
     @Test
     void getAnimalsTest() {
         assertEquals(3, zoo.getAnimals().size());
-        assertEquals("Lion", zoo.getAnimals().get(2).getName());
+        assertEquals("Lion", zoo.getAnimals().get(1).getName());
     }
 
     @Test

@@ -31,10 +31,10 @@ public class Monument {
 
     private boolean isEmpty(String text) {
         if (text == null) {
-
+            return false;
         }
         if (text.isBlank()) {
-            throw new IllegalArgumentException("Input is null");
+            return false;
         }
         return true;
     }

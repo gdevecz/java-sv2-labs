@@ -21,29 +21,15 @@ public class Words {
     }
 
     private boolean inputValidator(List<String> words, String pattern) {
-        if (patternIsNullOrBlank(pattern)
-                || isListNull(words)
-                || isWordsContainsNull(words)) {
-            return false;
+        if (words == null) {
+            throw new IllegalArgumentException("The list is null!");
         }
-        return true;
-    }
-
-    private boolean patternIsNullOrBlank(String text) {
-        if (text == null) {
+        if (pattern == null || words.contains(null)) {
             throw new IllegalArgumentException("The string is null!");
         }
-        if (text.isBlank()) {
+        if (pattern.isBlank()) {
             throw new IllegalArgumentException("The string is blank!");
         }
-        return false;
-    }
-
-    private boolean isListNull(List<String> words) {
-        return words == null;
-    }
-
-    private boolean isWordsContainsNull(List<String> words) {
-        return words.contains(null);
+        return true;
     }
 }
