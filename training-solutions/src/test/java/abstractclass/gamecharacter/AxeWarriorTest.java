@@ -28,7 +28,7 @@ class AxeWarriorTest {
         offender.secondaryAttack(defender);
 
 
-        assertEquals(97, offender.getHitPoint());
+        assertEquals(100, offender.getHitPoint());
         assertTrue(defender.getHitPoint() >= 80);
     }
 }

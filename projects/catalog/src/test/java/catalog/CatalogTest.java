@@ -1,7 +1,6 @@
 package catalog;
 
 
-import catalog.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

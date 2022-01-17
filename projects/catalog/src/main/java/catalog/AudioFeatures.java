@@ -35,15 +35,14 @@ public class AudioFeatures implements Feature {
 
     @Override
     public List<String> getContributors() {
-        List<String> result =new ArrayList<>(composer);
+        List<String> result = new ArrayList<>(composer);
         result.addAll(performers);
         return List.copyOf(result);
     }
 
     @Override
     public String getTitle() {
-        String result = title;
-        return result;
+        return title;
     }
 
     public int getLength() {

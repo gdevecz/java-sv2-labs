@@ -1,6 +1,5 @@
 package catalog;
 
-import catalog.SearchCriteria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +25,7 @@ public class SearchCriteriaTest {
 
     @Test
     public void testCreateByBoth() {
-        SearchCriteria searchCriteria = SearchCriteria.createByBoth("Metallica", "Ride the Lightning");
+        SearchCriteria searchCriteria = SearchCriteria.createByBoth("Ride the Lightning", "Metallica");
         assertEquals("Ride the Lightning", searchCriteria.getTitle());
         assertEquals("Metallica", searchCriteria.getContributor());
         assertTrue(searchCriteria.hasTitle());

@@ -13,7 +13,7 @@ public class CatalogItem {
     private String registrationNumber;
 
     public CatalogItem(String registrationNumber, int price, Feature... feature) {
-        if(Validators.isBlank(registrationNumber)) {
+        if (Validators.isBlank(registrationNumber)) {
             throw new IllegalArgumentException("Registration number is empty.");
         }
         if (feature.length == 0) {
@@ -21,9 +21,7 @@ public class CatalogItem {
         }
         this.registrationNumber = registrationNumber;
         this.price = price;
-        for (Feature actual : feature) {
-            features.add(actual);
-        }
+        features.addAll(Arrays.asList(feature));
     }
 
     public int fullLengthAtOneItem() {

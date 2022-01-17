@@ -32,8 +32,7 @@ public class PrintedFeatures implements Feature {
 
     @Override
     public String getTitle() {
-        String result = title;
-        return result;
+        return title;
     }
 
     public int getNumberOfPages() {

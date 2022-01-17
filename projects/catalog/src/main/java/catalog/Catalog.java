@@ -16,40 +16,32 @@ public class Catalog {
             throw new IllegalArgumentException("Page number must be positive");
         }
         int sum = 0;
-        List<CatalogItem> tmp = getAudioLibraryItems();
-        if (tmp.size()==0) {
+        int counter = 0;
+        List<CatalogItem> tmp = getPrintedLibraryItems();
+        if (tmp.isEmpty()) {
             throw new IllegalArgumentException("No page");
         }
         for (CatalogItem catalogItem : tmp) {
-            if (catalogItem.hasPrintedFeature()&& catalogItem.numberOfPagesAtOneItem()>limit) {
+            if (catalogItem.hasPrintedFeature() && catalogItem.numberOfPagesAtOneItem() > limit) {
+                counter++;
                 sum += catalogItem.numberOfPagesAtOneItem();
             }
         }
-        if (sum == 0) {
+        if (counter == 0) {
             throw new IllegalArgumentException("No page");
         }
-        return sum / (double) tmp.size();
+        return sum / (double) counter;
     }
 
     public void deleteItemByRegistrationNumber(String registrationNumber) {
-        CatalogItem delete = null;
-        for (CatalogItem catalogItem : catalogItems) {
-            if (catalogItem.getRegistrationNumber().equals(registrationNumber)) {
-                delete = catalogItem;
-            }
-        }
-        if (!(delete == null)) {
-            catalogItems.remove(delete);
-        }
+        catalogItems.remove(getItemByRegistrationNumber(registrationNumber));
     }
 
     public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria) {
         List<CatalogItem> result = new ArrayList<>();
         for (CatalogItem catalogItem : catalogItems) {
-            for (Feature feature : catalogItem.getFeatures()) {
-                if (isFoundItem(searchCriteria, feature)) {
-                    result.add(catalogItem);
-                }
+            if (isInActual(searchCriteria, catalogItem)) {
+                result.add(catalogItem);
             }
         }
         return result;
@@ -58,7 +50,7 @@ public class Catalog {
     public int getAllPageNumber() {
         int sum = 0;
         for (CatalogItem catalogItem : getPrintedLibraryItems()) {
-                sum += catalogItem.numberOfPagesAtOneItem();
+            sum += catalogItem.numberOfPagesAtOneItem();
         }
         return sum;
     }
@@ -66,7 +58,7 @@ public class Catalog {
     public List<CatalogItem> getAudioLibraryItems() {
         List<CatalogItem> result = new ArrayList<>();
         for (CatalogItem catalogItem : catalogItems) {
-            if(catalogItem.hasAudioFeature())
+            if (catalogItem.hasAudioFeature())
                 result.add(catalogItem);
         }
         return result;
@@ -76,7 +68,7 @@ public class Catalog {
         List<CatalogItem> tmp = getAudioLibraryItems();
         int sum = 0;
         for (CatalogItem catalogItem : tmp) {
-                sum += catalogItem.fullLengthAtOneItem();
+            sum += catalogItem.fullLengthAtOneItem();
         }
         return sum;
     }
@@ -84,33 +76,49 @@ public class Catalog {
     public List<CatalogItem> getPrintedLibraryItems() {
         List<CatalogItem> result = new ArrayList<>();
         for (CatalogItem catalogItem : catalogItems) {
-            if(catalogItem.hasPrintedFeature())
+            if (catalogItem.hasPrintedFeature())
                 result.add(catalogItem);
         }
         return result;
     }
 
+    private CatalogItem getItemByRegistrationNumber(String registrationNumber) {
+        for (CatalogItem catalogItem : catalogItems) {
+            if (catalogItem.getRegistrationNumber().equals(registrationNumber)) {
+                return catalogItem;
+            }
+        }
+        throw new IllegalArgumentException("This registration number is not exits.");
+    }
+
+    private boolean isInActual(SearchCriteria searchCriteria, CatalogItem catalogItem) {
+        for (Feature feature : catalogItem.getFeatures()) {
+            if (isFoundItem(searchCriteria, feature)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean isFoundItem(SearchCriteria searchCriteria, Feature feature) {
-        boolean contributorisExists = false;
-        boolean titleisExists = false;
+        boolean contributorIsEquals = false;
+        boolean titleIsEquals = false;
         if (searchCriteria.hasContributor()) {
-            contributorisExists = feature.getContributors().contains(searchCriteria.getContributor());
+            contributorIsEquals = feature.getContributors().contains(searchCriteria.getContributor());
         }
         if (searchCriteria.hasTitle()) {
-            titleisExists = feature.getTitle().equals(searchCriteria.getTitle());
+            titleIsEquals = feature.getTitle().equals(searchCriteria.getTitle());
         }
+        return resultFindCriteria(searchCriteria, contributorIsEquals, titleIsEquals);
+    }
+
+    private boolean resultFindCriteria(SearchCriteria searchCriteria, boolean contributorIsEquals, boolean titleIsEquals) {
         if (searchCriteria.hasTitle() && searchCriteria.hasContributor()) {
-            if (contributorisExists && titleisExists) {
-                return true;
-            }
+            return contributorIsEquals && titleIsEquals;
         } else if (searchCriteria.hasContributor()) {
-            if (contributorisExists) {
-                return true;
-            }
+            return contributorIsEquals;
         } else if (searchCriteria.hasTitle()) {
-            if (titleisExists) {
-                return true;
-            }
+            return titleIsEquals;
         }
         return false;
     }

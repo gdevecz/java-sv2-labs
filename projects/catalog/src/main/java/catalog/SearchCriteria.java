@@ -6,18 +6,19 @@ public class SearchCriteria {
 
     private String title;
 
-    private SearchCriteria(String contributor, String title) {
+    private SearchCriteria(String title, String contributor) {
         this.contributor = contributor;
         this.title = title;
     }
 
-    public static SearchCriteria createByBoth (String contributor, String title) {
+    public static SearchCriteria createByBoth (String title, String contributor) {
         if (Validators.isBlank(contributor)) {
             throw new IllegalArgumentException("Contributor is empty");
         }
         if (Validators.isBlank(title)) {
             throw new IllegalArgumentException("Title is empty");
         }
+        System.out.println(contributor+","+title);
         return new SearchCriteria(contributor, title);
     }
 
@@ -25,37 +26,29 @@ public class SearchCriteria {
         if (Validators.isBlank(contributor)) {
             throw new IllegalArgumentException("Contributor is empty");
         }
-        return new SearchCriteria(contributor, "");
+        return new SearchCriteria("", contributor);
     }
 
     public static SearchCriteria createByTitle(String title) {
         if (Validators.isBlank(title)) {
             throw new IllegalArgumentException("Title is empty");
         }
-        return new SearchCriteria("", title);
+        return new SearchCriteria(title,"");
     }
 
     public boolean hasContributor() {
-        if (contributor.isBlank()) {
-            return false;
-        }
-        return true;
+        return !Validators.isBlank(contributor);
     }
 
     public boolean hasTitle() {
-        if (title.isBlank()) {
-            return false;
-        }
-        return true;
+        return !Validators.isBlank(title);
     }
 
     public String getContributor() {
-        String result = contributor;
-        return result;
+        return contributor;
     }
 
     public String getTitle() {
-        String result = title;
-        return result;
+        return title;
     }
 }

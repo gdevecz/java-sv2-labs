@@ -8,7 +8,7 @@ public class Validators {
         return str==null||str.isBlank();
     }
 
-    public static boolean isEmpty(List list) {
+    public static boolean isEmpty(List<String> list) {
         return list == null || list.isEmpty();
     }
 }
