@@ -28,8 +28,8 @@ public abstract class Character {
     }
 
     protected void hit(Character enemy, int damage) {
-        if (getActualDefence() < damage) {
-            decreaseHitPoint(damage);
+        if (enemy.getActualDefence() < damage) {
+            enemy.decreaseHitPoint(damage);
         }
     }
 
