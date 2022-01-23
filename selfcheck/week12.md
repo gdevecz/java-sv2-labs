@@ -25,7 +25,7 @@ Ezen a héten a kollekciókkal fogtok részletesebben megismerkedni.
 * [x] [Map videó](https://e-learning.training360.com/courses/take/java-se-halado-koll/lessons/10769620-map)
 * [x] Map gyakorlati feladat
 * [x] [Autoboxing használata kollekcióknál videó](https://e-learning.training360.com/courses/take/java-se-halado-koll/lessons/10769619-autoboxing-hasznalata-kollekcioknal)
-* [ ] Autoboxing használata kollekcióknál gyakorlati feladat
+* [x] Autoboxing használata kollekcióknál gyakorlati feladat
 
 ## Műveletek kollekciókkal
 
