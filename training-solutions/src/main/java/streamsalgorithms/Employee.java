@@ -70,6 +70,7 @@ public class Employee {
                 employees.stream()
                         .mapToInt(Employee::getYearOfBirth)
                         .min()
+                        .orElseThrow(() -> new IllegalArgumentException("Empty"))
         );
         System.out.println();
         System.out.println("Add vissza a legkorábban született alkalmazott nevét:");
@@ -83,20 +84,19 @@ public class Employee {
                         })
                         .map(Employee::getName)
                         .findFirst()
+                        .orElseThrow(() -> new IllegalArgumentException("Empty"))
         );
         System.out.println();
         System.out.println("Add vissza, hogy igaz-e, hogy minden alkalmazott 1980 előtt született-e:");
         System.out.println(
                 employees.stream()
-                        .filter(employee -> employee.yearOfBirth < 1980)
-                        .count()
-                        == employees.size()
+                        .allMatch(employee -> employee.yearOfBirth < 1980)
         );
         System.out.println();
         System.out.println("Add vissza egy listában az összes, 1990-nél korábban született alkalmazottat:");
         System.out.println(
                 employees.stream()
-                        .filter(employee -> employee.yearOfBirth<1990)
+                        .filter(employee -> employee.yearOfBirth < 1990)
                         .collect(Collectors.toList())
         );
         System.out.println();
@@ -111,7 +111,7 @@ public class Employee {
                 "Add vissza egy listában az összes, 1990-nél korábban született alkalmazott nevét:");
         System.out.println(
                 employees.stream()
-                        .filter(employee -> employee.yearOfBirth<1990)
+                        .filter(employee -> employee.yearOfBirth < 1990)
                         .map(Employee::getName)
                         .collect(Collectors.toList())
         );
