@@ -6,31 +6,22 @@ import java.util.Optional;
 
 public class BucketList {
 
-    private List<Destination> destinations = new ArrayList<>();
+    List<Destination> destinations = new ArrayList<>();
+
+    public void addDestination(Destination destination) {
+        destinations.add(destination);
+    }
 
     public Optional<Destination> getDestinationWithKeyword(String keyword) {
-        for (Destination destination : destinations) {
-            if (destination.getDescription().contains(keyword)) {
-                return Optional.of(destination);
-            }
-        }
-        return Optional.empty();
+        return destinations.stream()
+                .filter(d -> d.getDescription().contains(keyword))
+                .findFirst()
+                ;
     }
 
     public Optional<Destination> getDestinationNearerThanGiven(int maxKm) {
-        for (Destination destination : destinations) {
-            if (destination.getKmFromHome() < maxKm) {
-                return Optional.of(destination);
-            }
-        }
-        return Optional.empty();
-    }
-
-    public List<Destination> getDestinations() {
-        return destinations;
-    }
-
-    public void addDestination(Destination newDestination) {
-        destinations.add(newDestination);
+        return destinations.stream()
+                .filter(d -> d.getKmFromHome() < maxKm)
+                .findFirst();
     }
 }

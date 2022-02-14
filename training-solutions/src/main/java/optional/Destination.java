@@ -1,20 +1,17 @@
 package optional;
 
-import java.util.Objects;
-import java.util.Optional;
-
 public class Destination {
 
     private String name;
 
     private String description;
 
-    private int kmFromHome;
+    private int KmFromHome;
 
     public Destination(String name, String description, int kmFromHome) {
         this.name = name;
         this.description = description;
-        this.kmFromHome = kmFromHome;
+        KmFromHome = kmFromHome;
     }
 
     public String getName() {
@@ -26,6 +23,6 @@ public class Destination {
     }
 
     public int getKmFromHome() {
-        return kmFromHome;
+        return KmFromHome;
     }
 }
