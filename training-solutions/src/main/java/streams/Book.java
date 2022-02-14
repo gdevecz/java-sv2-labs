@@ -1,19 +1,17 @@
 package streams;
 
-import java.util.List;
-
 public class Book {
 
     private String author;
 
     private String title;
 
-    private int pages;
+    private int numberOfPages;
 
-    public Book(String author, String title, int pages) {
+    public Book(String author, String title, int numberOfPages) {
         this.author = author;
         this.title = title;
-        this.pages = pages;
+        this.numberOfPages = numberOfPages;
     }
 
     public String getAuthor() {
@@ -24,7 +22,7 @@ public class Book {
         return title;
     }
 
-    public int getPages() {
-        return pages;
+    public int getNumberOfPages() {
+        return numberOfPages;
     }
 }
