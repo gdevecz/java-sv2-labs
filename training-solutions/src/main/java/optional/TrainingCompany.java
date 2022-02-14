@@ -1,5 +1,6 @@
 package optional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,38 +12,29 @@ public class TrainingCompany {
         this.courses = courses;
     }
 
-
     public Course getCheaperCourse(int maxPrice) {
-        Optional<Course> result = Optional.empty();
-        for (Course course : courses) {
-            if (course.getPrice() <= maxPrice) {
-                result = Optional.of(course);
-            }
-        }
-        return result.orElseThrow(() -> new IllegalArgumentException("No such course."));
+        return courses.stream()
+                .filter(c -> c.getPrice() <= maxPrice)
+                .sorted(Comparator.comparing(Course::getPrice))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("No such course."));
+    }
+
+    public int getPriceOfCourseWithGivenNameAndLevel(String name, Level level) {
+        return courses.stream()
+                .filter(c -> c.getName().equals(name) && c.getLevel() == level)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("No such course."))
+                .getPrice();
     }
 
     public String getNameOfCourseWithGivenLevel(Level level) {
         Optional<String> result = Optional.empty();
         for (Course course : courses) {
-            if (level == course.getLevel()) {
+            if (course.getLevel() == level) {
                 result = Optional.of(course.getName());
             }
         }
         return result.orElse("Sorry, there is no course at this level.");
-    }
-
-    public List<Course> getCourses() {
-        return courses;
-    }
-
-    public int getPriceOfCourseWithGivenNameAndLevel(String name, Level level) {
-        Optional<Integer> result = Optional.empty();
-        for (Course course : courses) {
-            if (course.getName().equals(name) && course.getLevel() == level) {
-                result = Optional.of(course.getPrice());
-            }
-        }
-        return result.orElseThrow(()->new IllegalArgumentException("No such course."));
     }
 }

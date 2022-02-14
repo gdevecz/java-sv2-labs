@@ -4,15 +4,16 @@ public class Course {
 
     private String name;
 
-    private int price;
-
     private Level level;
+
+    private int price;
 
     public Course(String name, Level level, int price) {
         this.name = name;
-        this.price = price;
         this.level = level;
+        this.price = price;
     }
+
 
     public String getName() {
         return name;
