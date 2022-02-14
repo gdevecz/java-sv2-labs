@@ -3,43 +3,46 @@ package lambdaintro;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UsedCars {
 
-    List<Car> cars = new ArrayList<>();
+    private List<Car> usedCars;
 
-    public UsedCars(List<Car> cars) {
-        this.cars = cars;
+    public UsedCars(List<Car> usedCars) {
+        this.usedCars = usedCars;
     }
 
     public List<Car> listCarsByPrice() {
-        List<Car> sorted = new ArrayList<>(cars);
-//        sorted.sort((car, anothercar) -> Integer.valueOf(car.getPrice()).compareTo(anothercar.getPrice()));
-//        sorted.sort((car, anothercar) -> Integer.compare(car.getPrice(), anothercar.getPrice()));
-        sorted.sort(Comparator.comparing(Car::getPrice));
-        return sorted;
+//        return usedCars.stream()
+//                .sorted(Comparator.comparing(Car::getPrice))
+//                .toList();
+        ArrayList<Car> result = new ArrayList<>(usedCars);
+        result.sort(Comparator.comparingInt(Car::getPrice));
+        return result;
     }
 
     public List<Car> listCarsByLengthDesc() {
-        List<Car> sorted = new ArrayList<>(cars);
-        sorted.sort((car, anothercar) -> Double.valueOf(car.getLength()).compareTo(anothercar.getLength()));
-        return sorted;
+//        return usedCars.stream()
+//                .sorted(Comparator.comparing(Car::getLength).reversed())
+//                .toList();
+        ArrayList<Car> result = new ArrayList<>(usedCars);
+        result.sort(Comparator.comparingDouble(Car::getLength).reversed());
+        return result;
     }
 
-    public List<Car> listCarByPrice() {
-        List<Car> sorted = new ArrayList<>(cars);
-        sorted.sort((car, anothercar) -> Integer.valueOf(car.getPrice()).compareTo(anothercar.getPrice()));
-        return sorted;
+    public List<Car> listCarsOneBrandByType(String brand) {
+//        return usedCars.stream()
+//                .filter(c -> c.getBrand().equals(brand))
+//                .sorted(Comparator.comparing(Car::getType))
+//                .toList();
+        ArrayList<Car> result = new ArrayList<>(usedCars);
+        result.removeIf(e->!e.getBrand().equals(brand));
+        result.sort(Comparator.comparing(Car::getType));
+        return result;
     }
 
-    public List<Car> listCarByPrice() {
-        List<Car> sorted = new ArrayList<>(cars);
-        sorted.sort((car, anothercar) -> Integer.valueOf(car.getPrice()).compareTo(anothercar.getPrice()));
-        return sorted;
-    }
-
-
-    public List<Car> getCars() {
-        return cars;
+    public List<Car> getUsedCars() {
+        return usedCars;
     }
 }
