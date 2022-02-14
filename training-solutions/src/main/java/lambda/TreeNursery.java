@@ -1,6 +1,5 @@
 package lambda;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TreeNursery {
@@ -11,13 +10,12 @@ public class TreeNursery {
         this.saplings = saplings;
     }
 
-    public void prune(int maxHeight) {
-        saplings.forEach(sapling -> sapling.cut(maxHeight));
+    void prune(int maxHeight) {
+        saplings.forEach(s->s.cut(maxHeight));
     }
 
-    public void sell(String species, int minHeight) {
-        saplings.removeIf(sapling ->
-                sapling.getSpecies().equals(species) && sapling.getHeight() >= minHeight);
+    void sell(String species, int minHeight) {
+        saplings.removeIf(s -> s.getSpecies().equals(species) && s.getHeight() >= minHeight);
     }
 
     public List<Sapling> getSaplings() {

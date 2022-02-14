@@ -11,7 +11,7 @@ public class Sapling {
         this.height = height;
     }
 
-    public void cut(int maxHeight) {
+    void cut(int maxHeight){
         height = Math.min(height, maxHeight);
     }
 
