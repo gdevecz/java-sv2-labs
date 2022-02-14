@@ -1,7 +1,6 @@
 package streams;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CookBook {
 
@@ -13,16 +12,16 @@ public class CookBook {
 
     public List<String> listCakeNamesWithGivenIngredient(String ingredient) {
         return cakes.stream()
-                .filter(cake -> cake.getIngredients().contains(ingredient))
+                .filter(c -> c.getIngredients().contains(ingredient))
                 .map(Cake::getName)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<String> listCakeNamesWithMaxIngredients(int max) {
         return cakes.stream()
-                .filter(cake -> cake.getIngredients().size() <= max)
+                .filter(c -> c.getIngredients().size() <= max)
                 .map(Cake::getName)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<Cake> getCakes() {
